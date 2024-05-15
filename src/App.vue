@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeadNavbar/>
-
+    <RouterView></RouterView>
   </div>
 </template>
 
