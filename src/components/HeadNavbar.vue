@@ -4,7 +4,8 @@
             <img src="@/assets/logo.png" alt="#" class="logo-icon">
         </RouterLink>
         <div class="left-nav">
-            <RouterLink :to="{ name: 'myPage' }">Mypage</RouterLink>
+            <RouterLink :to="{ name: 'login' }">로그인</RouterLink>
+            <RouterLink :to="{ name: 'mypage' }">Mypage</RouterLink>
             <img src="@/assets/search.png" alt="" class="icon">
             <input type="text">
         </div>
