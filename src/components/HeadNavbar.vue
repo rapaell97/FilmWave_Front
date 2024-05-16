@@ -4,9 +4,9 @@
             <img src="@/assets/logo.png" alt="#" class="logo-icon">
         </RouterLink>
         <div class="right-nav">
-            <RouterLink v-if="usestore.isLogin" :to="{ name: 'login' }">로그인</RouterLink>
-            <button @click="logout">로그아웃</button>
-            <RouterLink :to="{ name: 'mypage' }">Mypage</RouterLink>
+            <RouterLink v-if="userstore.isLogin===false" :to="{ name: 'login' }">로그인</RouterLink>
+            <button v-if="userstore.isLogin" @click="logout">로그아웃</button>
+            <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">Mypage</RouterLink>
 
             <img src="@/assets/search.png" alt="" class="icon">
         </div>
@@ -18,7 +18,7 @@ import { ref, onMounted, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
-const usestore = useUserStore()
+const userstore = useUserStore()
 const nowScroll = ref(0)
 
 const updateScroll = function() {
@@ -28,7 +28,7 @@ const updateScroll = function() {
 
 const navBackgroundColor = computed(() => {
     const opacity = nowScroll.value > 10 ? 1 : 0.3
-    return `rgba(0, 0, 128, ${opacity})` // navy 색상의 RGBA 표현
+    return `rgba(0, 0, 128, ${opacity})`
 })
 
 onMounted(() => {

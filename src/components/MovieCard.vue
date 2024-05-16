@@ -1,7 +1,7 @@
 <template>
     <div class="movie-div">
         <RouterLink :to="{name: 'movieDetail', params:{'movieId': movie.id}}">
-            <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" alt="" >
+            <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="" >
         </RouterLink>
     </div>
 </template>
