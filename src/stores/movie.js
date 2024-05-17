@@ -10,6 +10,7 @@ export const useMovieStore = defineStore('movie', () => {
   const movieList = ref([])
   const movieDetailList = ref([])
   const preferenceList = ref([])
+  const trailerList = ref([])
 
   const fetchMovie = function(){
     axios({
@@ -38,6 +39,23 @@ export const useMovieStore = defineStore('movie', () => {
       console.log(err)
     })
   }
+
+  const fetchTrailer = function(movieId){
+    axios({
+      method: 'GET',
+      url: `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzdjYTE1YjJmYjY0NmVmZmEyNzhkYmNlYTBhN2ZmNSIsInN1YiI6IjY2Mjc0NGFkZTg5NGE2MDE2NDNiNmIwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8ojNZptYmrdr0SLNqbb71r_P3QCQOctr2r3h-33fzBA'
+      }
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   
-  return { fetchMovie, fetchMovieDetail, movieList, movieDetailList, API_URL }
+  return { fetchMovie, fetchMovieDetail, fetchTrailer ,movieList, movieDetailList, API_URL }
 })
