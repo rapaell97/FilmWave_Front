@@ -29,23 +29,44 @@ const isLike = ref(false)
 
 const movieLike = function() {
     console.log(userstore.token)
-    if (isLike === true){
-        
+    moviestore.movieDetailList.like_users.forEach(user => {
+        if (user.username === moviestore.username){
+            isLike.value = true
+        }
+    })
+    
+    if (isLike.value === true){
+        axios({
+            method: 'DELETE',
+            url: `${moviestore.API_URL}/movies/${movieId.value}/like/`,
+            headers: {
+                Authorization: `Token ${userstore.token}`
+            }
+        })
+        .then((res) => {
+            console.log(res.data)
+            isLike.value = false
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
-    axios({
-      method: 'post',
-      url: `${moviestore.API_URL}/movies/${movieId.value}/like/`,
-      headers: {
-        Authorization: `Token ${userstore.token}`
-      }
-    })
-    .then((res) => {
-      console.log(res.data)
-      isLike.value = true
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    else{
+        axios({
+            method: 'POST',
+            url: `${moviestore.API_URL}/movies/${movieId.value}/like/`,
+            headers: {
+                Authorization: `Token ${userstore.token}`
+            }
+        })
+        .then((res) => {
+            console.log(res.data)
+            isLike.value = true
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 }
 
 onMounted(() => {

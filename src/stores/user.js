@@ -10,6 +10,7 @@ export const useUserStore = defineStore('user', () => {
   const isLogin = ref(false)
   const token = ref('')
   const errorMessage = ref('')
+  const username = ref('')
   
   const signup = function(payload){
     const { username, password1, password2 } = payload
@@ -50,16 +51,27 @@ export const useUserStore = defineStore('user', () => {
       }
     })
     .then(response => {
-      console.log("로그인 성공")
-      // console.log(response.data)
       token.value = response.data.key
-      console.log(token.value)
       router.push({name: 'home'})
+      axios({
+        method: 'GET',
+        url: `${API_URL}/accounts/user/`,
+        headers: {
+          Authorization: `Token ${token.value}`
+        }
+      })
+      .then(res => {
+        console.log(res.data)
+        username.value = res.data.username
+      })
+      .catch(err => {
+        console.log(err)
+      })
     })
     .catch(error => {
       console.log(error)
     })
 
   }
-  return { isLogin, signup, login, token, errorMessage }
+  return { isLogin, signup, login, token, errorMessage, username }
 }, { persist: true })
