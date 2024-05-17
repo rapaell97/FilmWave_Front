@@ -7,6 +7,7 @@
             <h3>{{ moviestore.movieDetailList.title }}</h3>
             <p>{{ moviestore.movieDetailList.overview }}</p>
             <p>기타 정보...</p>
+            <span> {{ like }} </span>
         </div>
     </div>
 </template>
@@ -19,6 +20,40 @@ import { useMovieStore } from '@/stores/movie';
 const route = useRoute()
 const moviestore = useMovieStore()
 const movieId = ref(route.params.movieId)
+const like = ref('🤍')
+const isLike = ref(false)
+
+const movieLike = function() {
+    axios({
+      method: 'post',
+      url: `${moviestore.API_URL}`,
+      params: movieId 
+    })
+    .then(res => {
+      console.log(res.data)
+      like.value = '❤'
+      isLike.value = true
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+const movieDislike = function() {
+    axios({
+      method: 'post',
+      url: `${moviestore.API_URL}`,
+      params: movieId 
+    })
+    .then(res => {
+      console.log(res.data)
+      like.value = '🤍'
+      isLike.value = false
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
 
 onMounted(() => {
     moviestore.fetchMovieDetail(movieId.value)
