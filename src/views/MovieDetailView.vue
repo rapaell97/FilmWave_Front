@@ -18,18 +18,26 @@
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useMovieStore } from '@/stores/movie';
+import { useMovieStore } from '@/stores/movie'
+import { useUserStore } from '@/stores/user'
 
 const route = useRoute()
 const moviestore = useMovieStore()
+const userstore = useUserStore()
 const movieId = ref(route.params.movieId)
 const isLike = ref(false)
 
 const movieLike = function() {
+    console.log(userstore.token)
+    if (isLike === true){
+        
+    }
     axios({
       method: 'post',
-      url: `${moviestore.API_URL}`,
-      params: movieId 
+      url: `${moviestore.API_URL}/movies/${movieId.value}/like/`,
+      headers: {
+        Authorization: `Token ${userstore.token}`
+      }
     })
     .then((res) => {
       console.log(res.data)
