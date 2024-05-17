@@ -1,6 +1,8 @@
 <template>
     <h1>영화상세정보</h1>
-    <h1>동영상</h1>
+    <div>
+        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${moviestore.trailerKey}?autoplay=1&controls=0&roof=1&playlist=${moviestore.trailerKey}&mute=1`" allow="autoplay" frameborder="0"></iframe>
+    </div>
     <div class="info-div">
         <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${moviestore.movieDetailList.poster_path}`" alt="" >
         <div >
@@ -71,6 +73,7 @@ const movieLike = function() {
 
 onMounted(() => {
     moviestore.fetchMovieDetail(movieId.value)
+    moviestore.fetchTrailer(movieId.value)
 })
 </script>
 
