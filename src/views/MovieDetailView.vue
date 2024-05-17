@@ -29,6 +29,9 @@ const isLike = ref(false)
 
 const movieLike = function() {
     console.log(userstore.token)
+    if (isLike === true){
+        
+    }
     axios({
       method: 'post',
       url: `${moviestore.API_URL}/movies/${movieId.value}/like/`,

@@ -40,7 +40,6 @@ const login = function(){
     flex-direction: column;
 }
 .login-div{
-    /* border: 1px solid ; */
     margin: auto;
     width: 300px;
     height: 300px;
