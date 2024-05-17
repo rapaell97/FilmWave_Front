@@ -11,6 +11,7 @@ export const useUserStore = defineStore('user', () => {
   const token = ref('')
   const errorMessage = ref('')
   const username = ref('')
+  const userId = ref('')
   
   const signup = function(payload){
     const { username, password1, password2 } = payload
@@ -63,7 +64,13 @@ export const useUserStore = defineStore('user', () => {
       })
       .then(res => {
         console.log(res.data)
+        // username.value = res.data.username
+        // userId.value = res.data.pk
+        console.log(res.data.username)
+        console.log(res.data.pk)
         username.value = res.data.username
+        userId.value = res.data.pk
+        console.log(userId.value)
       })
       .catch(err => {
         console.log(err)
@@ -81,7 +88,6 @@ export const useUserStore = defineStore('user', () => {
       url: `${API_URL}/accounts/logout/`,
     })
     .then(res => {
-      console.log(res.data)
       token.value = ''
       isLogin.value = false
     })
@@ -89,5 +95,5 @@ export const useUserStore = defineStore('user', () => {
       console.log(err)
     })
   }
-  return { isLogin, signup, login, logout, token, errorMessage, username, API_URL }
+  return { isLogin, signup, login, logout, token, errorMessage, username, API_URL, userId }
 }, { persist: true })
