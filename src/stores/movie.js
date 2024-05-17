@@ -45,5 +45,5 @@ export const useMovieStore = defineStore('movie', () => {
     })
   }
   
-  return { fetchMovie, fetchMovieDetail, movieList, movieDetailList }
+  return { fetchMovie, fetchMovieDetail, movieList, movieDetailList, API_TOKEN }
 })
