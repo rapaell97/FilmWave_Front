@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>선호도 조사 뷰</h1>
-    <!-- {{ genres }} -->
+
     <form @submit.prevent="submitServey">
       <div>
         <div v-for="genre in genres">
@@ -9,7 +9,7 @@
           <input type="checkbox" :id="genre.name" :value="genre.id" v-model="serveyResult">
         </div>
       </div>
-      <input type="submit" value="확인">
+      <input type="submit" value="제출">
     </form>
     {{ serveyParams }}
     <RouterLink :to="{ name: 'home' }">다음에 진행할게요</RouterLink>
@@ -50,7 +50,7 @@ const submitServey = function() {
 
   axios({
     method: 'POST',
-    url: 'https://example.com/submit/', 
+    url: `${moviestore.API_URL}`, 
     params: {
       genres: serveyParams.value
     }
@@ -66,5 +66,6 @@ const submitServey = function() {
 </script>
 
 <style scoped>
+
 
 </style>
