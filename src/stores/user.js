@@ -89,5 +89,5 @@ export const useUserStore = defineStore('user', () => {
       console.log(err)
     })
   }
-  return { isLogin, signup, login, logout, token, errorMessage, username }
+  return { isLogin, signup, login, logout, token, errorMessage, username, API_URL }
 }, { persist: true })

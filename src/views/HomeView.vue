@@ -1,6 +1,5 @@
 <template>
     <h1>홈 페이지</h1>
-    <!-- <iframe src="" frameborder="0"></iframe> -->
     <div class="container">
         <button class="scroll-button" @click="scrollLeft">←</button>
         <div class="list-div" ref="slideContainer">

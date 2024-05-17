@@ -14,6 +14,9 @@
             {{ isLike }}
         </div>
     </div>
+    <MovieReview
+    :movieId="movieId"
+    />
 </template>
 
 <script setup>
@@ -22,6 +25,7 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMovieStore } from '@/stores/movie'
 import { useUserStore } from '@/stores/user'
+import MovieReview from '@/components/MovieReview.vue'
 
 const route = useRoute()
 const moviestore = useMovieStore()
