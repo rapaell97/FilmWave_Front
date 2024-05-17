@@ -1,8 +1,12 @@
 <template>
     <div class="movie-div">
-        <RouterLink :to="{name: 'movieDetail', params:{'movieId': movie.id}}">
-            <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="" >
+        <RouterLink :to="{name: 'movieDetail', params:{'movieId': movie.movie_id}}">
+            <div class="img-div">
+                <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="" >
+            </div>
+            <h3>{{ movie.title }}</h3>
         </RouterLink>
+
     </div>
 </template>
 
@@ -14,17 +18,23 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.movie-div{
-    width: 250px;
-    height: 150px;
+.movie-div {
+    width: 200px; 
+    height: 500px;
     padding: 20px;
     display: flex;
+    flex-direction: column;
     margin: 0px;
 }
-.movie-img{
+.img-div {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 80%;
+    overflow: hidden;
+}
+.movie-img {
+    width: 300px;
+    height: 400px;
+    object-fit: contain; 
 }
 
 </style>

@@ -6,7 +6,7 @@
             <div class="slide-div">
                 <MovieCard
                     v-for="movie in moviestore.movieList"
-                    :key="movie.id"
+                    :key="movie.movie_id"
                     :movie="movie"
                     class="movie-card"
                 />
@@ -52,6 +52,7 @@ const scrollRight = () => {
     display: flex;
     align-items: center;
     overflow: hidden;
+
 }
 
 .scroll-button {
