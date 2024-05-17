@@ -52,6 +52,7 @@ export const useUserStore = defineStore('user', () => {
     })
     .then(response => {
       token.value = response.data.key
+      isLogin.value = true
       router.push({name: 'home'})
       axios({
         method: 'GET',
@@ -73,5 +74,20 @@ export const useUserStore = defineStore('user', () => {
     })
 
   }
-  return { isLogin, signup, login, token, errorMessage, username }
+
+  const logout = function() {
+    axios({
+      method: 'POST',
+      url: `${API_URL}/accounts/logout/`,
+    })
+    .then(res => {
+      console.log(res.data)
+      token.value = ''
+      isLogin.value = false
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+  return { isLogin, signup, login, logout, token, errorMessage, username }
 }, { persist: true })
