@@ -26,11 +26,7 @@ export const useMovieStore = defineStore('movie', () => {
   const fetchMovieDetail = function(movieId){
     axios({
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/${movieId}`,
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${API_TOKEN}`
-      }
+      url: `${API_URL}/movies/${movieId}`,
     })
     .then(res => {
       console.log(res.data)
