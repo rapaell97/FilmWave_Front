@@ -7,8 +7,9 @@
             <h3>{{ moviestore.movieDetailList.title }}</h3>
             <p>{{ moviestore.movieDetailList.overview }}</p>
             <p>기타 정보...</p>
-            <span v-if="isLike === true" @click="movieLike">좋아요버튼</span>
-            <span v-else @click="movieDislike">안좋아요버튼</span>
+            <span v-if="isLike === false" @click="movieLike">좋아요버튼</span>
+            <span v-else @click="movieLike">안좋아요버튼</span>
+            {{ isLike }}
         </div>
     </div>
 </template>
