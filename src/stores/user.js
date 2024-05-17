@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export const useUserStore = defineStore('user', () => {
   const router = useRouter()
-  const API_URL = 'http://127.0.0.1:8000/'
+  const API_URL = 'http://127.0.0.1:8000'
 
   const isLogin = ref(false)
   const token = ref('')
@@ -51,8 +51,9 @@ export const useUserStore = defineStore('user', () => {
     })
     .then(response => {
       console.log("로그인 성공")
-      console.log(response.data)
+      // console.log(response.data)
       token.value = response.data.key
+      console.log(token.value)
       router.push({name: 'home'})
     })
     .catch(error => {
@@ -61,4 +62,4 @@ export const useUserStore = defineStore('user', () => {
 
   }
   return { isLogin, signup, login, token, errorMessage }
-})
+}, { persist: true })
