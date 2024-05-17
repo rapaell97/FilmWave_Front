@@ -36,7 +36,7 @@ onMounted(() => {
 })
 
 const logout = function() {
-    usestore.isLogin = false
+    userstore.isLogin = false
 }
 
 </script>
