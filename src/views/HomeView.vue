@@ -4,6 +4,7 @@
         <button class="scroll-button" @click="scrollLeft">←</button>
         <div class="list-div" ref="slideContainer">
             <div class="slide-div">
+                <h1>평점 기반</h1>
                 <MovieCard
                     v-for="movie in moviestore.movieList"
                     :key="movie.movie_id"

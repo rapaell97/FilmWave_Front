@@ -20,12 +20,14 @@
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useMovieStore } from '@/stores/movie';
+import { useMovieStore } from '@/stores/movie'
+import { useRouter } from 'vue-router'
 
 const genres = ref([])
 const serveyResult = ref([])
 const moviestore = useMovieStore()
 const serveyParams = ref('')
+const router = useRouter()
 
 onMounted(() => {
   axios({
@@ -57,6 +59,7 @@ const submitServey = function() {
   })
   .then(res => {
     console.log('제출완료')
+    router.push({name:'home'})
   })
   .catch(err => {
     console.log(err)
