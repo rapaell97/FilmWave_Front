@@ -23,7 +23,6 @@ const nowScroll = ref(0)
 
 const updateScroll = function() {
     nowScroll.value = window.scrollY
-    console.log(nowScroll.value)
 }
 
 const navBackgroundColor = computed(() => {

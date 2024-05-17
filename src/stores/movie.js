@@ -18,7 +18,6 @@ export const useMovieStore = defineStore('movie', () => {
         url: `${API_URL}/movies/`,
       })
       .then(response => {
-        console.log(response.data)
         movieList.value = response.data
       })
       .catch(error => {
