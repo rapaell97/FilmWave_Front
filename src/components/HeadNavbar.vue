@@ -7,7 +7,7 @@
             <RouterLink v-if="userstore.isLogin===false" :to="{ name: 'login' }">로그인</RouterLink>
             <button v-if="userstore.isLogin" @click="userstore.logout">로그아웃</button>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">Mypage</RouterLink>
-
+            <RouterLink :to="{ name: 'group' }">그룹</RouterLink>
             <img src="@/assets/search.png" alt="" class="icon">
         </div>
     </nav>
