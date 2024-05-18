@@ -35,6 +35,8 @@ const groupCreate = function(){
     })
     .then(response => {
       console.log(response.data)
+      groupName.value = ''
+      groupDescription.value = ''
     })
     .catch(error => {
       console.log(error)
