@@ -15,9 +15,8 @@ export const useGenreStore = defineStore('genre', () => {
         url: `${API_URL}/movies/genres/`,
       })
       .then(response => {
-        // console.log(response.data)
         response.data.forEach(res => {
-            if( genreCategory.includes(res.name) ){
+            if( genreCategory.includes(res.name) && genreList.value.length < 7){
                 genreList.value.push(res)
             }
         })
