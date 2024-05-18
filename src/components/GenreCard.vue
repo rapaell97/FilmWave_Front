@@ -1,10 +1,13 @@
 <template>
-    <div class="genre-card">
-        <h3>{{ genre.name }}</h3>
-    </div>
+    <RouterLink :to="{ name: 'genreDetail', params: { 'genreId' : genre.genre_id } }">
+        <div class="genre-card">
+            <h3>{{ genre.name }}</h3>
+        </div>
+    </RouterLink>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 const props = defineProps({
     genre: Object
 })

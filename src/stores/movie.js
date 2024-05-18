@@ -12,10 +12,11 @@ export const useMovieStore = defineStore('movie', () => {
   const preferenceList = ref([])
   const trailerKey = ref('')
 
-  const fetchMovie = function(){
+  const fetchMovie = function(genreId=''){
     axios({
         method: 'GET',
         url: `${API_URL}/movies/`,
+        params: {genreId}
       })
       .then(response => {
         movieList.value = response.data

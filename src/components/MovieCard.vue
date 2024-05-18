@@ -24,17 +24,21 @@ const props = defineProps({
     padding: 20px;
     display: flex;
     flex-direction: column;
-    margin: 0px;
+    align-items: center; /* 중앙 정렬 추가 */
+    margin: 0;
+    box-sizing: border-box;
 }
 .img-div {
     width: 100%;
     height: 80%;
+    display: flex;
+    justify-content: center; /* 중앙 정렬 추가 */
+    align-items: center; /* 중앙 정렬 추가 */
     overflow: hidden;
 }
 .movie-img {
-    width: 300px;
-    height: 400px;
-    object-fit: contain; 
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* 이미지를 중앙에 맞추고 잘리지 않도록 설정 */
 }
-
 </style>

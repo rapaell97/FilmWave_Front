@@ -5,6 +5,7 @@ import SignupView from '@/views/SignupView.vue'
 import LoginView from '@/views/LoginView.vue'
 import MovieDetailView from '@/views/MovieDetailView.vue'
 import PreferenceSurveyView from '@/views/PreferenceSurveyView.vue'
+import GenreDetailView from '@/views/GenreDetailView.vue'
 
 
 const router = createRouter({
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/:movieId',
       name: 'movieDetail',
       component: MovieDetailView
+    },
+    {
+      path: '/genre/:genreId',
+      name: 'genreDetail',
+      component: GenreDetailView
     }
 
   ]
