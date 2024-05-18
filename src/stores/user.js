@@ -10,7 +10,7 @@ export const useUserStore = defineStore('user', () => {
   const isLogin = ref(false)
   const token = ref('')
   const errorMessage = ref('')
-  const username = ref('')
+  const userName = ref('')
   const userId = ref('')
   
   const signup = function(payload){
@@ -68,7 +68,7 @@ export const useUserStore = defineStore('user', () => {
         // userId.value = res.data.pk
         console.log(res.data.username)
         console.log(res.data.pk)
-        username.value = res.data.username
+        userName.value = res.data.username
         userId.value = res.data.pk
         console.log(userId.value)
       })
@@ -95,5 +95,5 @@ export const useUserStore = defineStore('user', () => {
       console.log(err)
     })
   }
-  return { isLogin, signup, login, logout, token, errorMessage, username, API_URL, userId }
+  return { isLogin, signup, login, logout, token, errorMessage, userName, API_URL, userId }
 }, { persist: true })
