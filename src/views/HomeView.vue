@@ -15,12 +15,14 @@
         </div>
         <button class="scroll-button" @click="scrollRight">→</button>
     </div>
+    <GenreBar/>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movie'
 import MovieCard from '@/components/MovieCard.vue'
+import GenreBar from '@/components/GenreBar.vue';
 
 const moviestore = useMovieStore()
 const slideContainer = ref(null)
