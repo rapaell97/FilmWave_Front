@@ -6,6 +6,8 @@ import LoginView from '@/views/LoginView.vue'
 import MovieDetailView from '@/views/MovieDetailView.vue'
 import PreferenceSurveyView from '@/views/PreferenceSurveyView.vue'
 import GenreDetailView from '@/views/GenreDetailView.vue'
+import GroupView from '@/views/GroupView.vue'
+import GroupCreateView from '@/views/GroupCreateView.vue'
 
 
 const router = createRouter({
@@ -45,6 +47,16 @@ const router = createRouter({
       path: '/genre/:genreId',
       name: 'genreDetail',
       component: GenreDetailView
+    },
+    {
+      path: '/group',
+      name: 'group',
+      component: GroupView,
+    },
+    {
+      path: '/groupcreate',
+      name: 'group-create',
+      component: GroupCreateView
     }
 
   ]
