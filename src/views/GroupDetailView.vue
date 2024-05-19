@@ -10,17 +10,18 @@
     </div>
     <div v-if="group.admin">
       <button
-      v-if="userstore.userId === group.admin.id"
-      @click="groupDelete"
-      >
+        v-if="userstore.userId === group.admin.id"
+        @click="groupDelete"
+        >
       그룹 삭제</button>
     </div>
+    <RouterLink :to="{name:'groupManageMent', params:{'groupId': groupId }}">그룹 관리</RouterLink>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
 import { formatDate } from '@/utils/datefomatter'

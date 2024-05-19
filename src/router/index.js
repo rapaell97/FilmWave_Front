@@ -9,6 +9,7 @@ import GenreDetailView from '@/views/GenreDetailView.vue'
 import GroupView from '@/views/GroupView.vue'
 import GroupCreateView from '@/views/GroupCreateView.vue'
 import GroupDetailView from '@/views/GroupDetailView.vue'
+import GroupManagementView from '@/views/GroupManagementView.vue'
 
 
 const router = createRouter({
@@ -58,6 +59,11 @@ const router = createRouter({
       path: '/group/:groupId',
       name: 'groupDetail',
       component: GroupDetailView
+    },
+    {
+      path: '/group/:groupId/groupManagement',
+      name: 'groupManageMent',
+      component: GroupManagementView
     },
     {
       path: '/groupcreate',
