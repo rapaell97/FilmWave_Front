@@ -89,6 +89,8 @@ export const useUserStore = defineStore('user', () => {
     })
     .then(res => {
       token.value = ''
+      userId.value = ''
+      userName.value = ''
       isLogin.value = false
     })
     .catch(err => {

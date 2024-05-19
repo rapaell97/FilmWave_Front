@@ -5,7 +5,6 @@
             <img src="@/assets/group2.png" alt="" class="group-img">
             <p>운영자: {{ group.admin.username }}</p>
             <p>인원: {{ group.members_count }}</p>
-            <!-- {{ group }} -->
         </div>
     </RouterLink>
 </template>
