@@ -14,14 +14,15 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
 const userstore = useUserStore()
+const router = useRouter()
 const groupName = ref('')
 const groupDescription = ref('')
 
 const groupCreate = function(){
-    console.log(userstore.token)
     axios({
       method: 'POST',
       url: `${userstore.API_URL}/groups/`,
@@ -34,9 +35,9 @@ const groupCreate = function(){
       }
     })
     .then(response => {
-      console.log(response.data)
       groupName.value = ''
       groupDescription.value = ''
+      router.push({name: 'group'})
     })
     .catch(error => {
       console.log(error)

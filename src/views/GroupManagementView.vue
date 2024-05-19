@@ -1,20 +1,20 @@
 <template>
     <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
     <div class="modal-content" @click.stop>
-      <div class="signup-div">
+      <div class="MembershipRequest-div">
         <p>가입승인요청</p>
 
-        <div v-for="(signup, idx) in signupList" :key="signup.id">
-          <p>요청자: {{ signup.user.username }}</p>
-          <p>요청일시: {{ formatDate(signup.date_requested) }}</p>
-          <p>상태 : {{ signup.status }}</p>
+        <div v-for="(request, idx) in MembershipRequestList" :key="request.id">
+          <p>요청자: {{ request.user.username }}</p>
+          <p>요청일시: {{ formatDate(request.date_requested) }}</p>
+          <p>상태 : {{ request.status }}</p>
 
-          <div v-if="signupStatus[idx]===false">
-            <button @click="signupApprove(signup.user.id, idx)">승인</button>
-            <button @click="signupReject(signup.user.id, idx)">거절</button>
+          <div v-if="MembershipRequestStatus[idx]===false">
+            <button @click="RequestApprove(request.user.id, idx)">승인</button>
+            <button @click="RequestReject(request.user.id, idx)">거절</button>
           </div>
           <div v-else>
-            <p>{{ signupStatusMessage[idx] }}</p>
+            <p>{{ MembershipRequestStatusMessage[idx] }}</p>
           </div>
 
           <hr>
@@ -42,12 +42,12 @@ const route = useRoute()
 const userstore = useUserStore()
 const groupstore = useGroupStore()
 const groupId = ref(route.params.groupId)
-const signupList = ref('')
+const MembershipRequestList = ref('')
 const isModalOpen = ref(false)
-const signupStatus = ref('')
-const signupStatusMessage = ref('')
+const MembershipRequestStatus = ref('')
+const MembershipRequestStatusMessage = ref('')
 
-const fetchGroupSignup = function(){
+const fetchMembershipRequest = function(){
     axios({
       method: 'GET',
       url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/`,
@@ -56,10 +56,9 @@ const fetchGroupSignup = function(){
       }
     })
     .then(response => {
-      console.log(response.data)
-      signupList.value = response.data
-      signupStatus.value = Array(signupList.value.length).fill(false)
-      signupStatusMessage.value = Array(signupList.value.length).fill(null)
+      MembershipRequestList.value = response.data
+      MembershipRequestStatus.value = Array(MembershipRequestList.value.length).fill(false)
+      MembershipRequestStatusMessage.value = Array(MembershipRequestList.value.length).fill(null)
     })
     .catch(error => {
       console.log(error)
@@ -67,7 +66,7 @@ const fetchGroupSignup = function(){
 }
 
 const openModal = () => {
-  fetchGroupSignup()
+    fetchMembershipRequest()
   isModalOpen.value = true
 }
 
@@ -75,10 +74,10 @@ const closeModal = () => {
   isModalOpen.value = false
 }
 
-const signupApprove = function(signupId, signupIdx){
+const RequestApprove = function(requestId, requestIdx){
     axios({
       method: 'PATCH',
-      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${signupId}/`,
+      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${requestId}/`,
       data: {
         approval: 'true'
       },
@@ -87,18 +86,17 @@ const signupApprove = function(signupId, signupIdx){
       }
     })
     .then(response => {
-      console.log(response.data)
-      signupStatus.value[signupIdx] = true
-      signupStatusMessage.value[signupIdx] = '승인되었습니다'
+      MembershipRequestStatus.value[requestIdx] = true
+      MembershipRequestStatusMessage.value[requestIdx] = '승인되었습니다'
     })
     .catch(error => {
       console.log(error)
     })
 }
-const signupReject = function(signupId, signupIdx){
+const RequestReject = function(requestId, requestIdx){
     axios({
       method: 'PATCH',
-      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${signupId}/`,
+      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${requestId}/`,
       data: {
         approval: 'false'
       },
@@ -107,9 +105,8 @@ const signupReject = function(signupId, signupIdx){
       }
     })
     .then(response => {
-      console.log(response.data)
-      signupStatus.value[signupIdx] = true
-      signupStatusMessage.value[signupIdx] = '거절되었습니다'
+      MembershipRequestStatus.value[requestId] = true
+      MembershipRequestStatusMessage.value[requestIdx] = '거절되었습니다'
     })
     .catch(error => {
       console.log(error)
@@ -137,7 +134,7 @@ const signupReject = function(signupId, signupIdx){
   width: 400px;
 }
 
-.signup-div {
+.MembershipRequest-div {
   margin-bottom: 20px;
 }
 </style>
