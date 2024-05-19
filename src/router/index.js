@@ -8,6 +8,7 @@ import PreferenceSurveyView from '@/views/PreferenceSurveyView.vue'
 import GenreDetailView from '@/views/GenreDetailView.vue'
 import GroupView from '@/views/GroupView.vue'
 import GroupCreateView from '@/views/GroupCreateView.vue'
+import GroupDetailView from '@/views/GroupDetailView.vue'
 
 
 const router = createRouter({
@@ -52,6 +53,11 @@ const router = createRouter({
       path: '/group',
       name: 'group',
       component: GroupView,
+    },
+    {
+      path: '/group/:groupId',
+      name: 'groupDetail',
+      component: GroupDetailView
     },
     {
       path: '/groupcreate',
