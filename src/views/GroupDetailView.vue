@@ -24,7 +24,7 @@
     <RouterLink :to="{name:'groupManageMent', params:{'groupId': groupId }}">그룹 관리</RouterLink>
     <button
     v-if="isMember === false"
-    @click="groupSignupRequest"
+    @click="MembershipRequest"
     >
     가입하기</button>
 </template>
@@ -70,9 +70,7 @@ onMounted(() => {
       url: `${groupstore.API_URL}/groups/${groupId.value}`,
     })
     .then(response => {
-    //   console.log(response.data)
       group.value = response.data
-      console.log(group.value)
       isMemberCheck()
     })
     .catch(error => {
@@ -96,7 +94,7 @@ const closeModal = () => {
   isModalOpen.value = false
 }
 
-const groupSignupRequest = function() {
+const MembershipRequest = function() {
   axios({
     method: 'POST',
     url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/`,
