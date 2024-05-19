@@ -8,21 +8,48 @@
             <p>{{ formatDate(group.create_at) }}</p>
         </div>
     </div>
+    <div v-if="group.admin">
+      <button
+      v-if="userstore.userId === group.admin.id"
+      @click="groupDelete"
+      >
+      그룹 삭제</button>
+    </div>
 </template>
 
 <script setup>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
+import { useUserStore } from '@/stores/user'
 import { formatDate } from '@/utils/datefomatter'
 
 
 const route = useRoute()
+const router = useRouter()
 const groupstore = useGroupStore()
+const userstore = useUserStore()
 
 const groupId = ref(route.params.groupId)
 const group = ref('')
+
+const groupDelete = function(){
+  axios({
+    method: 'DELETE',
+    url: `${groupstore.API_URL}/groups/${groupId.value}`,
+    headers:{
+        Authorization: `Token ${userstore.token}`
+      }
+  })
+  .then(response => {
+    console.log(response.data)
+    router.push({name:'group'})
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
 
 onMounted(() => {
     axios({
