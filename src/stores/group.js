@@ -13,7 +13,6 @@ export const useGroupStore = defineStore('group', () => {
         url: `${API_URL}/groups/`,
       })
       .then(response => {
-        console.log(response)
         groupList.value = response.data
       })
       .catch(error => {
@@ -21,5 +20,5 @@ export const useGroupStore = defineStore('group', () => {
       })
   }
 
-  return { groupList, fetchGroup }
+  return { groupList, fetchGroup, API_URL }
 })
