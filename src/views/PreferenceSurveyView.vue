@@ -1,12 +1,13 @@
 <template>
   <div>
     <h1>선호도 조사 뷰</h1>
-
+    {{ serveyResult }}
     <form @submit.prevent="submitServey">
       <div>
         <div v-for="genre in genres">
+          <!-- {{ genre }} -->
           <label :for="genre.name">{{ genre.name }}</label>
-          <input type="checkbox" :id="genre.name" :value="genre.id" v-model="serveyResult">
+          <input type="checkbox" :id="genre.name" :value="genre.genre_id" v-model="serveyResult">
         </div>
       </div>
       <input type="submit" value="제출">
@@ -32,15 +33,11 @@ const router = useRouter()
 onMounted(() => {
   axios({
     method: 'GET',
-    url: `https://api.themoviedb.org/3/genre/movie/list`,
-    headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${moviestore.API_TOKEN}`
-  }
+    url: `${moviestore.API_URL}/movies/genres/`,
   })
   .then(res => {
-    console.log(res.data.genres)
-    genres.value = res.data.genres
+    console.log(res.data)
+    genres.value = res.data
   })
   .catch(err => {
     console.log(err)
@@ -49,10 +46,9 @@ onMounted(() => {
 
 const submitServey = function() {
   serveyParams.value = serveyResult.value.join('%')
-
   axios({
     method: 'POST',
-    url: `${moviestore.API_URL}`, 
+    url: `${moviestore.API_URL}/`, 
     params: {
       genres: serveyParams.value
     }

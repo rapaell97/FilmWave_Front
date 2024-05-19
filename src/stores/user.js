@@ -63,14 +63,8 @@ export const useUserStore = defineStore('user', () => {
         }
       })
       .then(res => {
-        console.log(res.data)
-        // username.value = res.data.username
-        // userId.value = res.data.pk
-        console.log(res.data.username)
-        console.log(res.data.pk)
         userName.value = res.data.username
         userId.value = res.data.pk
-        console.log(userId.value)
       })
       .catch(err => {
         console.log(err)
@@ -92,6 +86,7 @@ export const useUserStore = defineStore('user', () => {
       userId.value = ''
       userName.value = ''
       isLogin.value = false
+      router.push({name: 'home'})
     })
     .catch(err => {
       console.log(err)
