@@ -27,7 +27,6 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMovieStore } from '@/stores/movie'
-import MovieSlideCard from '@/components/MovieSlideCard.vue'
 
 const moviestore = useMovieStore()
 const currentSlide = ref(0)
