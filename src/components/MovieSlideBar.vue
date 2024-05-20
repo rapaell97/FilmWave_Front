@@ -2,7 +2,7 @@
   <div class="slide-div">
     <div class="slide-container" :style="{ transform: `translateX(-${currentSlide * 100}vw)` }">
       <div
-        v-for="movie in moviestore.movieList"
+        v-for="movie in validMovies"
         class="slide-box"
       >
       <RouterLink :to="{name: 'movieDetail', params:{'movieId': movie.movie_id}}">
@@ -14,7 +14,7 @@
         <div>
           <h3 class="info">{{ movie.title }}</h3>
             <p class="info">장르: {{ movie.genres[0].name }}</p>
-            <p class="info">줄거리: {{ movie.overview }}</p>
+            <p class="info">줄거리: {{ replaceOverview(movie.overview) }}</p>
           </div>
         </div>
       </RouterLink>
@@ -24,12 +24,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMovieStore } from '@/stores/movie'
 
 const moviestore = useMovieStore()
 const currentSlide = ref(0)
+
+const validMovies = computed(() => {
+  return moviestore.movieList.filter(movie => movie && movie.overview && movie.overview.length > 0)
+})
 
 const startSlideShow = () => {
   const totalSlides = moviestore.movieList.length
@@ -37,11 +41,19 @@ const startSlideShow = () => {
 
   slideInterval = setInterval(() => {
     currentSlide.value = (currentSlide.value + 1) % totalSlides
-  }, 6000)
+  }, 5000)
 
   return () => {
     clearInterval(slideInterval)
   }
+}
+
+const replaceOverview = (overview) => {
+  const maxLength = 248
+  if (overview.length > maxLength) {
+    return overview.substring(0, maxLength) + '...'
+  }
+  return overview
 }
 
 onMounted(() => {
