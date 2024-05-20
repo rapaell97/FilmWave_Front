@@ -5,9 +5,9 @@
         </RouterLink>
         <div class="right-nav">
             <RouterLink v-if="userstore.isLogin===false" :to="{ name: 'login' }">
-                <button>로그인</button>
+                <button class="log-btn">Login</button>
             </RouterLink>
-            <button v-if="userstore.isLogin" @click="userstore.logout">로그아웃</button>
+            <button v-if="userstore.isLogin" @click="userstore.logout" class="log-btn">Logout</button>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">
                 <img src="@/assets/profile_icon2.png" alt="icon_img" class="icon">
             </RouterLink>
@@ -60,21 +60,37 @@ nav{
 }
 
 .right-nav{
+    width: 200px;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .logo-icon{
     width: 80px;
     height: 40px
 }
+.logo-icon:hover{
+    transform: scale(1.2);
+}
 
 .icon{
     width: 30px;
     height: 30px;
 }
-
-.sign-button{
-
+.icon:hover{
+    transform: scale(1.2);
+}
+.log-btn{
+    width: 60px;
+    height: 35px;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 15%;
+    font-weight: bolder;
+}
+.log-btn:hover{
+    transform: scale(1.2);
 }
 
 </style>
