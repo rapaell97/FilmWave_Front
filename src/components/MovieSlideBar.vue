@@ -7,14 +7,17 @@
       >
       <RouterLink :to="{name: 'movieDetail', params:{'movieId': movie.movie_id}}">
         <img :src="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" alt="" class="slide-img">
-      </RouterLink>
-      <div>
-        <div>
-          <img src="" alt="">
+      <div class="movie-info">
+        <div style="margin: auto;">
+          <img :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="" class="info-poster">
         </div>
-        <h3>{{ movie.title }}</h3>
-        <p></p>
-      </div>
+        <div>
+          <h3 class="info">{{ movie.title }}</h3>
+            <p class="info">장르: {{ movie.genres[0].name }}</p>
+            <p class="info">줄거리: {{ movie.overview }}</p>
+          </div>
+        </div>
+      </RouterLink>
       </div>
     </div>
   </div>
@@ -24,7 +27,6 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useMovieStore } from '@/stores/movie'
-import MovieSlideCard from '@/components/MovieSlideCard.vue'
 
 const moviestore = useMovieStore()
 const currentSlide = ref(0)
@@ -35,9 +37,8 @@ const startSlideShow = () => {
 
   slideInterval = setInterval(() => {
     currentSlide.value = (currentSlide.value + 1) % totalSlides
-  }, 5000)
+  }, 6000)
 
-  // Clear the interval when the component is unmounted
   return () => {
     clearInterval(slideInterval)
   }
@@ -45,7 +46,6 @@ const startSlideShow = () => {
 
 onMounted(() => {
   const clearSlideInterval = startSlideShow()
-  // Clear interval on unmounted
   return () => {
     clearSlideInterval()
   }
@@ -74,9 +74,37 @@ onMounted(() => {
   height: 100%;
   box-sizing: border-box; 
   overflow: hidden;
+  position: relative;
 }
 .slide-img{
   width: 100%;
   height: 100%;
 }
+.movie-info{
+  display: flex;
+  width: 600px;
+  height: 330px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 80px;
+  right: 120px;
+  border-radius: 8%;
+  transition: background-color 0.5s ease;
+}
+
+.movie-info:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.info-poster{
+  width: 200px;
+  margin-right: 15px;
+  border-radius: 10%;
+}
+.info{
+  color: aliceblue;
+  margin-bottom: 0;
+}
+
 </style>
