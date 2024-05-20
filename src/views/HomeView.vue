@@ -1,5 +1,5 @@
 <template>
-    <h1>홈 페이지</h1>
+    <MovieSlidebar/>
     <div class="container">
         <button class="scroll-button" @click="scrollLeft">←</button>
         <div class="list-div" ref="slideContainer">
@@ -22,7 +22,8 @@
 import { ref, onMounted } from 'vue'
 import { useMovieStore } from '@/stores/movie'
 import MovieCard from '@/components/MovieCard.vue'
-import GenreBar from '@/components/GenreBar.vue';
+import GenreBar from '@/components/GenreBar.vue'
+import MovieSlidebar from '@/components/MovieSlideBar.vue'
 
 const moviestore = useMovieStore()
 const slideContainer = ref(null)
