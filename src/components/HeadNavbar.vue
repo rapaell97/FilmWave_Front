@@ -1,14 +1,16 @@
 <template>
     <nav :style="{backgroundColor: navBackgroundColor}">
         <RouterLink :to="{ name: 'home' }">
-            <img src="@/assets/logo.png" alt="#" class="logo-icon">
+            <img src="@/assets/logo.png" alt="logo-img" class="logo-icon">
         </RouterLink>
         <div class="right-nav">
             <RouterLink v-if="userstore.isLogin===false" :to="{ name: 'login' }">로그인</RouterLink>
             <button v-if="userstore.isLogin" @click="userstore.logout">로그아웃</button>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">Mypage</RouterLink>
             <RouterLink :to="{ name: 'group' }">그룹</RouterLink>
-            <img src="@/assets/search.png" alt="" class="icon">
+            <RouterLink :to="{ name: 'search' }">
+                <img src="@/assets/search.png" alt="search-img" class="icon">
+            </RouterLink>
         </div>
     </nav>
 </template>
