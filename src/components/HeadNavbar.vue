@@ -5,9 +5,9 @@
         </RouterLink>
         <div class="right-nav">
             <RouterLink v-if="userstore.isLogin===false" :to="{ name: 'login' }">
-                <button class="log-btn">Login</button>
+                <b class="log-tag">Login</b>
             </RouterLink>
-            <button v-if="userstore.isLogin" @click="userstore.logout" class="log-btn">Logout</button>
+            <b v-if="userstore.isLogin" @click="userstore.logout" class="log-tag">Logout</b>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">
                 <img src="@/assets/profile_icon2.png" alt="icon_img" class="icon">
             </RouterLink>
@@ -81,15 +81,11 @@ nav{
 .icon:hover{
     transform: scale(1.2);
 }
-.log-btn{
-    width: 60px;
-    height: 35px;
-    border: none;
-    background-color: aliceblue;
-    border-radius: 15%;
-    font-weight: bolder;
+.log-tag{
+    color: aliceblue;
 }
-.log-btn:hover{
+.log-tag:hover{
+    cursor: pointer;
     transform: scale(1.2);
 }
 
