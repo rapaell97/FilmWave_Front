@@ -10,6 +10,7 @@ import GroupView from '@/views/GroupView.vue'
 import GroupCreateView from '@/views/GroupCreateView.vue'
 import GroupDetailView from '@/views/GroupDetailView.vue'
 import GroupManagementView from '@/views/GroupManagementView.vue'
+import SearchView from '@/views/SearchView.vue'
 
 
 const router = createRouter({
@@ -69,6 +70,11 @@ const router = createRouter({
       path: '/groupcreate',
       name: 'group-create',
       component: GroupCreateView
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: SearchView
     }
 
   ]

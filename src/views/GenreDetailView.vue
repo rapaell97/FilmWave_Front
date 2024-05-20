@@ -28,7 +28,7 @@ onMounted(() => {
 <style scoped>
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개의 아이템을 배치 */
-    gap: 16px; /* 각 아이템 간격 */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 16px; 
 }
 </style>
