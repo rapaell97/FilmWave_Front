@@ -72,6 +72,7 @@ onMounted(() => {
   width: 100%;
   height: 800px;
   position: relative;
+  box-shadow: 0 -15px 15px -10px rgba(0, 0, 0, 0.7), 0 15px 15px -10px rgba(0, 0, 0, 0.7);
 }
 
 .slide-container {
