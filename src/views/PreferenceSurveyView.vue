@@ -66,5 +66,4 @@ const submitServey = function() {
 
 <style scoped>
 
-
 </style>
