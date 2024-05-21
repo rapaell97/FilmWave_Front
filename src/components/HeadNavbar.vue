@@ -9,13 +9,13 @@
             </RouterLink>
             <b v-if="userstore.isLogin" @click="userstore.logout" class="log-tag">Logout</b>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">
-                <img src="@/assets/profile_icon2.png" alt="icon_img" class="icon">
+                <i class="fa-solid fa-user nav-icon" style="color: #ffffff;"></i>
             </RouterLink>
             <RouterLink :to="{ name: 'group' }">
-                <img src="@/assets/group1.png" alt="" class="icon">
+                <i class="fa-solid fa-users nav-icon" style="color: #ffffff;"></i>
             </RouterLink>
             <RouterLink :to="{ name: 'search' }">
-                <img src="@/assets/search.png" alt="search-img" class="icon">
+                <i class="fa-solid fa-magnifying-glass nav-icon" style="color: #ffffff;"></i>
             </RouterLink>
         </div>
     </nav>
@@ -60,7 +60,7 @@ nav{
 }
 
 .right-nav{
-    width: 200px;
+    width: 180px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -86,6 +86,9 @@ nav{
 }
 .log-tag:hover{
     cursor: pointer;
+    transform: scale(1.2);
+}
+.nav-icon:hover{
     transform: scale(1.2);
 }
 
