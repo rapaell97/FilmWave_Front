@@ -24,7 +24,7 @@ const props = defineProps({
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 중앙 정렬 추가 */
+    align-items: center;
     margin: 0;
     box-sizing: border-box;
 }
@@ -32,8 +32,8 @@ const props = defineProps({
     width: 100%;
     height: 80%;
     display: flex;
-    justify-content: center; /* 중앙 정렬 추가 */
-    align-items: center; /* 중앙 정렬 추가 */
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 .movie-img {

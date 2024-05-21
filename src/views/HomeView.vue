@@ -1,10 +1,10 @@
 <template>
     <MovieSlidebar/>
+    <h2 class="category-name">최신 인기 영화</h2>
     <div class="container">
-        <button class="scroll-button" @click="scrollLeft">←</button>
+        <button class="scroll-btn btn-left" @click="scrollLeft"><i class="fa-solid fa-arrow-left"></i></button>
         <div class="list-div" ref="slideContainer">
             <div class="slide-div">
-                <h1>평점 기반</h1>
                 <MovieCard
                     v-for="movie in moviestore.movieList"
                     :key="movie.movie_id"
@@ -13,7 +13,7 @@
                 />
             </div>
         </div>
-        <button class="scroll-button" @click="scrollRight">→</button>
+        <button class="scroll-btn btn-right" @click="scrollRight"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
     <GenreBar/>
 </template>
@@ -56,15 +56,45 @@ const scrollRight = () => {
     display: flex;
     align-items: center;
     overflow: hidden;
-
+    position: relative;
 }
 
-.scroll-button {
+.scroll-btn{
+    width: 40px;
+    height: 80px;
     background-color: #ccc;
     border: none;
     padding: 10px;
     cursor: pointer;
     opacity: 20%;
+    border-radius: 20%;
+}
+
+.btn-left{
+    position: absolute;
+    top: 150px;
+    z-index: 1;
+}
+.btn-right{
+    position: absolute;
+    top:150px;
+    right: 0px;
+}
+.btn-left:hover{
+    opacity: 0.7;
+    transform: scale(1.1);
+    background-color: black;
+}
+.btn-left:hover .fa-arrow-left {
+    color: white; 
+}
+.btn-right:hover{
+    opacity: 0.7;
+    transform: scale(1.1);
+    background-color: black;
+}
+.btn-right:hover .fa-arrow-right {
+    color: white; 
 }
 
 .list-div {
@@ -84,5 +114,9 @@ const scrollRight = () => {
 .movie-card {
     flex: 0 0 20%;
     padding: 5px;
+}
+.category-name{
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 </style>
