@@ -35,7 +35,7 @@ onMounted(() => {
 const scrollLeft = () => {
     if (slideContainer.value) {
         slideContainer.value.scrollBy({
-            left: -window.innerWidth,
+            left: -window.innerWidth * 0.975,
             behavior: 'smooth'
         })
     }
@@ -44,7 +44,7 @@ const scrollLeft = () => {
 const scrollRight = () => {
     if (slideContainer.value) {
         slideContainer.value.scrollBy({
-            left: window.innerWidth,
+            left: window.innerWidth * 0.975,
             behavior: 'smooth'
         })
     }
@@ -68,6 +68,7 @@ const scrollRight = () => {
     cursor: pointer;
     opacity: 20%;
     border-radius: 20%;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
 .btn-left{

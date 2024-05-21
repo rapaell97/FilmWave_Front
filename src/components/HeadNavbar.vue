@@ -68,25 +68,24 @@ nav{
 
 .logo-icon{
     width: 80px;
-    height: 40px
+    height: 40px;
+    transition: transform 0.3s ease;
 }
 .logo-icon:hover{
     transform: scale(1.2);
 }
 
-.icon{
-    width: 30px;
-    height: 30px;
-}
-.icon:hover{
-    transform: scale(1.2);
-}
+
 .log-tag{
     color: aliceblue;
+    transition: transform 0.2s ease;
 }
 .log-tag:hover{
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.1);
+}
+.nav-icon{
+    transition: transform 0.2s ease;
 }
 .nav-icon:hover{
     transform: scale(1.2);
