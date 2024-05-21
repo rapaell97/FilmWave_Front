@@ -12,9 +12,10 @@ import HeadNavbar from '@/components/HeadNavbar.vue'
 </script>
 
 <style scoped>
-.main-div{
-  background-color: rgb(91, 91, 236);
-  width: 100%;
+.main-div {
+    background: linear-gradient(to bottom, navy, rgb(173, 173, 255)); /* 그라데이션 효과 추가 */
+    width: 100%;
+    height: 100%; /* 예제 높이 설정, 필요에 따라 조정 가능 */
 }
 
 html, body, template{

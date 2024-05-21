@@ -17,8 +17,16 @@ const props = defineProps({
 <style scoped>
 .genre-card{
     width: 120px;
-    height: 90px;
+    height: 80px;
     border: 1px solid black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
 }
 
 </style>

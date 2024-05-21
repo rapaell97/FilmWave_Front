@@ -27,6 +27,9 @@ onMounted(() => {
 
 .genrebar-div{
     display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-evenly;
 }
 
 </style>
