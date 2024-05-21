@@ -1,7 +1,7 @@
 <template>
     <RouterLink :to="{ name: 'groupDetail', params:{ 'groupId': group.id } }">
         <div class="group-div">
-            <h3 class="group-title"><<{{ group.title }}>></h3>
+            <h3 class="group-title">{{ group.title }}</h3>
             <div class="img-div">
                 <img v-if= "group.image === null" src="@/assets/group2.png" alt="" class="group-img">
                 <img v-else :src="`${group.image}`" :alt="`${ group.id }`" class="group-img">
@@ -55,10 +55,11 @@ a{
     color: black;
 }
 .group-title{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 0;
     text-align: center;
-    color: black
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .text-div{
     padding-left: 8px;
