@@ -4,14 +4,15 @@
       <div class="MembershipRequest-div">
         <p>가입승인요청</p>
 
-        <div v-for="(request, idx) in MembershipRequestList" :key="request.id">
-          <p>요청자: {{ request.user.username }}</p>
-          <p>요청일시: {{ formatDate(request.date_requested) }}</p>
-          <p>상태 : {{ request.status }}</p>
+        <div v-for="(membershipRequest, idx) in MembershipRequestList" :key="membershipRequest.id">
+          <!-- {{membershipRequest}} -->
+          <p>요청자: {{ membershipRequest.user.username }}</p>
+          <p>요청일시: {{ formatDate(membershipRequest.date_requested) }}</p>
+          <p>상태 : {{ membershipRequest.status }}</p>
 
           <div v-if="MembershipRequestStatus[idx]===false">
-            <button @click="RequestApprove(request.user.id, idx)">승인</button>
-            <button @click="RequestReject(request.user.id, idx)">거절</button>
+            <button @click="RequestApprove(idx, membershipRequest.id)">승인</button>
+            <button @click="RequestReject(idx, membershipRequest.id)">거절</button>
           </div>
           <div v-else>
             <p>{{ MembershipRequestStatusMessage[idx] }}</p>
@@ -74,10 +75,10 @@ const closeModal = () => {
   isModalOpen.value = false
 }
 
-const RequestApprove = function(requestId, requestIdx){
+const RequestApprove = function(requestIdx, membershipRequestId){
     axios({
       method: 'PATCH',
-      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${requestId}/`,
+      url: `${groupstore.API_URL}/groups/${groupId.value}/membership-requests/${membershipRequestId}/`,
       data: {
         approval: 'true'
       },
