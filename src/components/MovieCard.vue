@@ -4,7 +4,7 @@
             <div class="img-div">
                 <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="" >
             </div>
-            <h3>{{ movie.title }}</h3>
+            <h3 class="movie-title">{{ movie.title }}</h3>
         </RouterLink>
 
     </div>
@@ -20,17 +20,18 @@ const props = defineProps({
 <style scoped>
 .movie-div {
     width: 200px; 
-    height: 500px;
+    height: 400px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
     box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .img-div {
     width: 100%;
-    height: 80%;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,6 +40,20 @@ const props = defineProps({
 .movie-img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover; /* 이미지를 중앙에 맞추고 잘리지 않도록 설정 */
+    object-fit: contain;
+    border-radius: 3%; 
 }
+a{
+    text-decoration: none;
+    color: rgb(221, 217, 217);
+}
+.movie-title{
+    margin-top: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.movie-div:hover{
+    transform: scale(1.1);
+}
+
 </style>

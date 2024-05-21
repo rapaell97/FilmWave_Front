@@ -100,14 +100,16 @@ onMounted(() => {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  bottom: 80px;
-  right: 120px;
+  bottom: 50px;
+  right: 100px;
   border-radius: 8%;
   transition: background-color 0.5s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .movie-info:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
 }
 
 .info-poster{
