@@ -27,9 +27,11 @@ const props = defineProps({
 
 <style scoped>
 .group-div{
+    margin-left: 20px;
+    margin-right: 20px;
     background-color: lightgoldenrodyellow;
     width: 200px;
-    height: 400px;
+    height: 350px;
     border-radius: 3%;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease
@@ -40,7 +42,9 @@ const props = defineProps({
 
 .img-div{
     width: 100%;
-    height: 50%
+    height: 50%;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+
 }
 .group-img{
     width: 100%;
@@ -57,7 +61,7 @@ a{
     color: black
 }
 .text-div{
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 </style>
