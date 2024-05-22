@@ -1,24 +1,24 @@
 <template>
   <div v-if="isOpen" class="modal-overlay" @click="closeModal">
-    <div class="modal-content" @click.stop>
+    <div v-if="postArticle" class="modal-content" @click.stop>
       <button @click="closeModal">Close</button>
-      <h2>제목 : {{ post.title }}</h2>
-      <p>{{ post.content }}</p>
-      <p>작성자 : {{ post.user.username }}</p>
+      <h2 v-if="postArticle.title">제목 : {{ postArticle.title }}</h2>
+      <p v-if="postArticle.content">{{ postArticle.content }}</p>
+      <p v-if="postArticle.user && postArticle.user.username">작성자 : {{ postArticle.user.username }}</p>
 
-      <div v-if="post.comment_set" class="comment-div">
-        <div v-for="comment in post.comment_set">
-            {{ comment.user.username }}: {{ comment.content }}
-            <hr>
+      <div v-if="postArticle.comment_set" class="comment-div">
+        <div v-for="comment in postArticle.comment_set" :key="comment.id">
+          {{ comment.user.username }}: {{ comment.content }}
+          <hr>
         </div>
       </div>
 
-      <p v-if="post.comment_set.length===0">아직 댓글이 없습니다</p>
+      <p v-if="postArticle.comment_set.length === 0">아직 댓글이 없습니다</p>
       <div class="comment-create-div">
         <b @click="createDivOpen" style="cursor: pointer;">댓글 작성하기</b>
         <div v-if="isCreateDivOpen">
           <input type="text" v-model="newComment" class="comment-input">
-          <button @click="createComment(post.id)">작성</button>
+          <button @click="createComment(postId)">작성</button>
         </div>
       </div>
     </div>
@@ -36,17 +36,16 @@ const userstore = useUserStore()
 const groupstore = useGroupStore()
 const route = useRoute()
 
-
 const props = defineProps({
-  post: Object,
-  isOpen: Boolean,
+  postId: Number,
+  isOpen: Boolean
 })
 
 const groupId = ref(route.params.groupId)
-
 const emit = defineEmits(['close'])
 const newComment = ref('')
 const isCreateDivOpen = ref(false)
+const postArticle = ref(null)
 
 const createDivOpen = function() {
   isCreateDivOpen.value = true
@@ -56,21 +55,50 @@ const closeModal = () => {
   emit('close')
 }
 
-const createComment = function(postId){
+const fetchComment = function() {
+  axios({
+    method: 'GET',
+    url: `${userstore.API_URL}/groups/${groupId.value}/posts/`,
+    headers: {
+      Authorization: `Token ${userstore.token}`
+    }
+  })
+  .then(response => {
+    console.log(response.data)
+    response.data.forEach((res) => {
+      if (res.id === props.postId) {
+        postArticle.value = res
+      }
+    })
+    console.log(postArticle.value)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+watch(() => props.isOpen, (newVal) => {
+  if (newVal) {
+    fetchComment()
+  }
+})
+
+const createComment = function(postId) {
   axios({
     method: 'POST',
     url: `${userstore.API_URL}/groups/${groupId.value}/posts/${postId}/comments/`,
-    headers:{
-        Authorization: `Token ${userstore.token}`
-      },
+    headers: {
+      Authorization: `Token ${userstore.token}`
+    },
     data: {
-      content : newComment.value
+      content: newComment.value
     }
   })
   .then(res => {
     console.log(res.data)
     groupstore.fetchGroupPost(groupId.value)
     newComment.value = ''
+    fetchComment()
   })
   .catch(err => {
     console.log(err)
@@ -102,15 +130,13 @@ const createComment = function(postId){
   flex-direction: column;
   margin-top: 20px;
 }
-.comment-div{
+.comment-div {
   border: solid 1px;
   padding: 10px;
 }
-.comment-input{
+.comment-input {
   width: 500px;
   margin-top: 5px;
   margin-right: 5px;
 }
-
-
 </style>
