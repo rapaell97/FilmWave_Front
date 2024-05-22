@@ -34,7 +34,7 @@ const props = defineProps({
     height: 350px;
     border-radius: 3%;
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 5px rgba(255, 255, 255, 0.3), 0 6px 20px rgba(255, 255, 255, 0.3); 
+    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 1px 3px 10px rgba(99, 193, 132, 0.8); 
 }
 .group-div:hover {
     transform: scale(1.02)

@@ -120,6 +120,7 @@ const postCreate = function() {
   background-color: #343d3f;
   margin-bottom: 10px;
   overflow-y: auto;
+  box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7)
 }
 .post-create {
   width: 70%;
@@ -168,5 +169,18 @@ textarea {
   resize: none;
   padding: 0;
   font-size: 1.3em;
+}
+
+.postBoard-div::-webkit-scrollbar {
+  width: 12px; /* 스크롤 바의 너비 */
+}
+
+.postBoard-div::-webkit-scrollbar-thumb {
+  background-color: rgba(52, 61, 63, 0.5); /* 스크롤 바 손잡이의 색상 및 투명도 */
+  border-radius: 10px; /* 스크롤 바 손잡이의 모서리 반경 */
+}
+
+.postBoard-div::-webkit-scrollbar-track {
+  background-color: rgba(52, 61, 63, 0.2); /* 스크롤 바 트랙의 색상 및 투명도 */
 }
 </style>
