@@ -30,6 +30,7 @@ export const useMovieStore = defineStore('movie', () => {
   }
 
   const fetchRecommendMovie = function(){
+    console.log('token', userstore.token)
     axios({
         method: 'GET',
         url: `${API_URL}/movies/recommend/`,
