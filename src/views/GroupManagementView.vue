@@ -5,7 +5,6 @@
         <p>가입승인요청</p>
 
         <div v-for="(membershipRequest, idx) in MembershipRequestList" :key="membershipRequest.id">
-          <!-- {{membershipRequest}} -->
           <p>요청자: {{ membershipRequest.user.username }}</p>
           <p>요청일시: {{ formatDate(membershipRequest.date_requested) }}</p>
           <p>상태 : {{ membershipRequest.status }}</p>
