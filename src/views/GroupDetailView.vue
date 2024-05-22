@@ -159,7 +159,7 @@ const MembershipRequest = function() {
 .group-info{
     width: 40%;
     height: 200px;
-    background-color: aliceblue;
+    background-color: #343d3f;
     display: flex;
     margin-top: 50px;
     margin-left: auto;

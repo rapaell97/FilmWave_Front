@@ -30,7 +30,7 @@
   </div>
 
   <GroupPostComment
-    :post="selectPost"
+    :postId="selectPostId"
     :isOpen="isCommentModalOpen"
     @close="closeCommentModal"
   />
@@ -55,12 +55,12 @@ const newPostTitle = ref('')
 const newPostContent = ref('')
 
 const isCommentModalOpen = ref(false)
-const selectPost = ref('')
+const selectPostId = ref(0)
 
 const openComment = function(postId) {
   const post = groupstore.groupPostList.find(post => post.id === postId)
   if (post) {
-    selectPost.value = post
+    selectPostId.value = post.id
     isCommentModalOpen.value = true
   }
 }
