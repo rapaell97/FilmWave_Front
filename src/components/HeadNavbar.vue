@@ -40,7 +40,7 @@ const navBackgroundColor = computed(() => {
 
 const navShadow = computed(() => {
     const shadowOpacity = nowScroll.value > 0 ? 0.2 : 0;
-    return `0 4px 6px rgba(255, 255, 255, ${shadowOpacity})`;
+    return `0 4px 6px rgba(99, 193, 132, ${shadowOpacity})`;
 });
 
 onMounted(() => {

@@ -18,16 +18,28 @@
       </div>
     </div>
 
-
-    <div class="group-info" v-if="group.admin">
-        <img src="@/assets/group/default.png" alt="" class="group-img">
-        <div class="info-detail">
-            <h1>{{ group.title }}</h1>
-            <p>소개 : {{ group.description }}</p>
-            <p>운영자 : {{ group.admin.username }}</p>
-            <p>개설일자 : {{ formatDate2(group.create_at) }}</p>
-            <button class="members-btn" @click="openMemberModal">Members</button>
+    <div class="group-div" :style="groupDivStyle">
+      <div class="group-box" v-if="group.admin">
+        <div class="group-info">
+          <img src="@/assets/group/default.png" alt="" class="group-img">
+          <div class="info-detail">
+              <h1>{{ group.title }}</h1>
+              <p>소개 : {{ group.description }}</p>
+              <p>운영자 : {{ group.admin.username }}</p>
+              <p>개설일자 : {{ formatDate2(group.create_at) }}</p>
+          </div>
         </div>
+        <div class="info-btn-div">
+          <button
+            v-if="isMember === false"
+            @click="MembershipRequest"
+            class="info-btn"
+            >
+            가입하기
+          </button>
+          <button class="members-btn info-btn" @click="openMemberModal">Members</button>
+        </div>
+      </div>
     </div>
 
     <div v-if="group.admin">
@@ -41,12 +53,6 @@
         <button v-if="userstore.userId === group.admin.id">그룹 관리</button>
       </RouterLink>
     </div>
-    <button
-      v-if="isMember === false"
-      @click="MembershipRequest"
-      >
-      가입하기
-    </button>
 
     <GroupMovieList/>
     <GroupPostBoard/>
@@ -55,7 +61,7 @@
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
@@ -153,30 +159,57 @@ const MembershipRequest = function() {
   })
 }
 
+
+const groupDivStyle = computed(() => {
+  if (groupstore.groupMovieList.length > 0) {
+    return {
+      backgroundImage: `url(https://image.tmdb.org/t/p/original/${groupstore.groupMovieList[0].backdrop_path})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }
+  } else {
+    return {
+      backgroundImage: 'url(@/assets/example.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }
+  }
+})
 </script>
 
 <style scoped>
-.group-info{
-    width: 40%;
-    height: 200px;
-    background-color: #343d3f;
-    display: flex;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+.group-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 700px;
+  box-shadow: 0 1px 10px rgba(99, 193, 132, 1);
+}
 
+.group-box{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(52, 61, 63, 0.65); ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-info{
+  width: 40%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  padding-left: 200px;
 }
 .info-detail{
   margin-left: 30px;
   position: relative;
+  color: rgb(221, 217, 217);
 }
-.members-btn {
-  position: absolute;
-  left: 500px;
-  bottom: 15px;
-  margin: 0;
-}
+
 .group-img{
     width: 150px;
 }
@@ -226,7 +259,19 @@ const MembershipRequest = function() {
   width: 300px;
   text-align: center;
 }
-.member-info {
-  margin-left: 3px;
+.info-btn-div{
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+}
+.info-btn{
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgba(99, 193, 132);
+  border: none;
+  font-weight: bold;
 }
 </style>
