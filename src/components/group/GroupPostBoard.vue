@@ -6,22 +6,34 @@
       <GroupPostArticle
         v-for="post in groupstore.groupPostList"
         :post="post"
+        :key="post.id"
+        @click="openComment(post.id)"
       />
+    </div>
+
+    <div class="create-icon-div">
+      <h3 style="color: rgb(221, 217, 217);">게시글 작성하기</h3>
       <button v-if="isPostCreateOpen===false" class="icon-btn" @click="postCreateOpen">
-        <i class="fa-solid fa-pen-to-square fa-2xl"></i>
+          <i class="fa-solid fa-pen-to-square fa-2xl" style="color: #ffffff;"></i>
       </button>
     </div>
 
     <div v-if="isPostCreateOpen" class="post-create">
       <form @submit.prevent="postCreate">
-        <input type="text" placeholder="제목을 입력하세요" v-model="newPostTitle">
+        <input type="text" placeholder="제목을 입력하세요" v-model="newPostTitle" class="input-title">
         <textarea placeholder="게시글을 입력하세요.." v-model="newPostContent"></textarea>
         <button>작성</button>
       </form>
-      <!-- <button @click="postCreateClose">취소</button> -->
+      <button @click="postCreateClose">취소</button>
     </div>
 
   </div>
+
+  <GroupPostComment
+    :post="selectPost"
+    :isOpen="isCommentModalOpen"
+    @close="closeCommentModal"
+  />
 </template>
 
 <script setup>
@@ -31,6 +43,7 @@ import { useRoute } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
 import GroupPostArticle from '@/components/group/GroupPostArticle.vue'
+import GroupPostComment from '@/components/group/GroupPostComment.vue'
 
 const route = useRoute()
 const groupstore = useGroupStore()
@@ -40,6 +53,21 @@ const groupId = ref(route.params.groupId)
 const isPostCreateOpen = ref(false)
 const newPostTitle = ref('')
 const newPostContent = ref('')
+
+const isCommentModalOpen = ref(false)
+const selectPost = ref('')
+
+const openComment = function(postId) {
+  const post = groupstore.groupPostList.find(post => post.id === postId)
+  if (post) {
+    selectPost.value = post
+    isCommentModalOpen.value = true
+  }
+}
+
+const closeCommentModal = function() {
+  isCommentModalOpen.value = false
+}
 
 const postCreateOpen = function() {
   isPostCreateOpen.value = true
@@ -65,6 +93,7 @@ const postCreate = function() {
     newPostTitle.value=''
     newPostContent.value=''
     groupstore.fetchGroupPost(groupId.value)
+    isPostCreateOpen.value = false
   })
   .catch(err => {
     console.log(err)
@@ -85,26 +114,21 @@ const postCreate = function() {
 }
 
 .postBoard-div {
-  width: 80%;
+  width: 70%;
   height: 400px;
+  padding: 20px;
   background-color: aliceblue;
   margin-bottom: 10px;
+  overflow-y: auto;
 }
 .post-create {
-  width: 80%;
-}
-textarea {
-  width: 100%;
-  height: 3em;
-  border: none;
-  resize: none;
-  padding: 0;
-  font-size: 1.5em;
+  width: 70%;
 }
 .icon-btn {
   background: none;
   border: none;
-  padding: 0;  /* 패딩 제거 */
+  padding: 0;
+  margin-left: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -112,12 +136,31 @@ textarea {
 }
 
 .icon-btn i {
-  margin: 0;  /* 아이콘 주변 여백 제거 */
+  margin: 0;
 }
 
 .post-btn {
   display: flex;
-  justify-content: flex-end;  /* 오른쪽 끝으로 정렬 */
+  justify-content: flex-end;
   margin-top: 5px;
+}
+
+.create-icon-div{
+  display: flex;
+  justify-content: flex-end;
+}
+.input-title{
+  width: 200px;
+  height: 25px;
+  margin-bottom: 5px;
+  border: none;
+}
+textarea {
+  width: 100%;
+  height: 3em;
+  border: none;
+  resize: none;
+  padding: 0;
+  font-size: 1.3em;
 }
 </style>

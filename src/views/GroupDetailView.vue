@@ -1,5 +1,4 @@
 <template>
-    <!-- <h1>그룹상세페이지</h1> -->
     <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <p>가입 요청이 성공적으로 전송되었습니다!</p>
@@ -110,6 +109,7 @@ onMounted(() => {
     })
 
     groupstore.fetchGroupMovie(groupId.value)
+    groupstore.fetchGroupPost(groupId.value)
 })
 
 const isMemberCheck = function(){
