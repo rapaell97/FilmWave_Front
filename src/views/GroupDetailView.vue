@@ -49,7 +49,9 @@
       가입하기
     </button>
 
-    <GroupMovieList/>    
+    <GroupMovieList/>
+    <GroupPostBoard/>
+
 </template>
 
 <script setup>
@@ -59,7 +61,9 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
 import { formatDate2 } from '@/utils/datefomatter'
-import GroupMovieList from '@/components/GroupMovieList.vue'
+
+import GroupMovieList from '@/components/group/GroupMovieList.vue'
+import GroupPostBoard from '@/components/group/GroupPostBoard.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -186,6 +190,7 @@ const MembershipRequest = function() {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -211,6 +216,7 @@ const MembershipRequest = function() {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .member-modal-content {
