@@ -15,7 +15,7 @@ export const useGroupStore = defineStore('group', () => {
         url: `${API_URL}/groups/`,
         headers: {
           Authorization: `Token ${userstore.token}`
-      }
+        }
       })
       .then(response => {
         groupList.value = response.data
@@ -25,5 +25,22 @@ export const useGroupStore = defineStore('group', () => {
       })
   }
 
-  return { groupList, fetchGroup, API_URL }
+  const fetchGroupMovie = function(groupId){
+    console.log(groupId)
+    axios({
+      method: 'GET',
+      url: `${API_URL}/groups/${groupId}/movies/`,
+      headers: {
+        Authorization: `Token ${userstore.token}`
+      }
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  return { groupList, fetchGroup, API_URL, fetchGroupMovie }
 })

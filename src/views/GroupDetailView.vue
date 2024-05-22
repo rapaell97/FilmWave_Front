@@ -1,5 +1,5 @@
 <template>
-    <h1>그룹상세페이지</h1>
+    <!-- <h1>그룹상세페이지</h1> -->
     <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <p>가입 요청이 성공적으로 전송되었습니다!</p>
@@ -20,15 +20,17 @@
     </div>
 
 
-    <div class="group-info">
+    <div class="group-info" v-if="group.admin">
         <img src="@/assets/group/default.png" alt="" class="group-img">
-        <div>
+        <div class="info-detail">
             <h1>{{ group.title }}</h1>
-            <p>{{ group.description }}</p>
-            <p>{{ formatDate(group.create_at) }}</p>
-            <button @click="openMemberModal">Members</button>
+            <p>소개 : {{ group.description }}</p>
+            <p>운영자 : {{ group.admin.username }}</p>
+            <p>개설일자 : {{ formatDate2(group.create_at) }}</p>
+            <button class="members-btn" @click="openMemberModal">Members</button>
         </div>
     </div>
+
     <div v-if="group.admin">
       <button
         v-if="userstore.userId === group.admin.id"
@@ -54,7 +56,7 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
-import { formatDate } from '@/utils/datefomatter'
+import { formatDate2 } from '@/utils/datefomatter'
 
 const route = useRoute()
 const router = useRouter()
@@ -99,6 +101,8 @@ onMounted(() => {
     .catch(error => {
       console.log(error)
     })
+
+    groupstore.fetchGroupMovie(groupId.value)
 })
 
 const isMemberCheck = function(){
@@ -146,11 +150,25 @@ const MembershipRequest = function() {
 
 <style scoped>
 .group-info{
-    width: 80%;
+    width: 40%;
     height: 200px;
-    border: 1px solid black;
+    background-color: aliceblue;
     display: flex;
-    margin: auto;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+
+}
+.info-detail{
+  margin-left: 30px;
+  position: relative;
+}
+.members-btn {
+  position: absolute;
+  left: 500px;
+  bottom: 15px;
+  margin: 0;
 }
 .group-img{
     width: 150px;
