@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>LOGIN</h1>
+        <h1>로그인</h1>
         <div class="login-div">
             <form class="login-form" @submit.prevent="login">
                 <label for="username">아이디를 입력하세요</label>
