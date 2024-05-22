@@ -12,7 +12,11 @@
             <p>현재 생성된 그룹이 없습니다..</p>
         </div>
     </div>
-    <RouterLink :to="{ name: 'group-create' }">그룹 생성하기</RouterLink>
+
+    <div class="container" style="margin-top: 50px;">
+        <RouterLink :to="{ name: 'group-create' }"><i class="fa-solid fa-circle-plus fa-2xl" style="color: #c4c8cf;"></i></RouterLink>
+        <h3 class="create-text">그룹 생성</h3>
+    </div>
 </template>
 
 <script setup>
@@ -42,4 +46,17 @@ onMounted(() => {
   gap: 16px; 
 }
 
+.create-text{
+    margin-top: 10px;
+    color: rgb(221, 217, 217);
+}
+
+.fa-circle-plus {
+    transition: transform 0.3s ease;
+}
+
+.fa-circle-plus:hover{
+    transform: scale(1.2);
+
+}
 </style>

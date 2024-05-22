@@ -13,7 +13,7 @@ import HeadNavbar from '@/components/HeadNavbar.vue'
 
 <style>
 .main-div {
-  background-image: url('@/assets/background.png');
+  /* background-image: url('@/assets/background.png'); */
   background-size: cover; 
   background-position: center; 
   width: 100%;
@@ -25,5 +25,6 @@ html, body {
   margin: 0;
   width: 100%;
   height: 100%;
+  background-image: url('@/assets/background.png');
 }
 </style>
