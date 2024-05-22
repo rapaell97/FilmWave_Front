@@ -16,7 +16,7 @@ export const useGenreStore = defineStore('genre', () => {
       })
       .then(response => {
         response.data.forEach(res => {
-            if( genreCategory.includes(res.name) && genreList.value.length < 7){
+            if( genreCategory.includes(res.name) && genreList.value.length < 6){
                 genreList.value.push(res)
             }
         })
