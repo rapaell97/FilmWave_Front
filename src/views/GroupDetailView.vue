@@ -21,10 +21,9 @@
 
 
     <div class="group-info">
-        <img src="@/assets/group2.png" alt="" class="group-img">
+        <img src="@/assets/group/default.png" alt="" class="group-img">
         <div>
             <h1>{{ group.title }}</h1>
-            <!-- {{ group }} -->
             <p>{{ group.description }}</p>
             <p>{{ formatDate(group.create_at) }}</p>
             <button @click="openMemberModal">Members</button>
