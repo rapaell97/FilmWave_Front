@@ -25,4 +25,5 @@ html, body {
   height: 100%;
   background-image: url('@/assets/background.png');
 }
+
 </style>
