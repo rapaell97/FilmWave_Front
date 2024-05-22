@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import MovieWithReviewCard from './MovieWithReviewCard.vue'
+import MovieWithReviewCard from '../MovieWithReviewCard.vue'
 
 import { ref, onMounted } from 'vue';
 import axios from 'axios';

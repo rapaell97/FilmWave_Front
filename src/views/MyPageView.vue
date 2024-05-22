@@ -4,12 +4,13 @@
     </div>
     <LikeMovieList />
     <MyGroupList />
+    <MyReviewList />
 </template>
 
 <script setup>
 import LikeMovieList from '@/components/mypage/LikeMovieList.vue';
 import MyGroupList from '@/components/mypage/MyGroupList.vue';
-
+import MyReviewList from '@/components/mypage/MyReviewList.vue';
 </script>
 
 <style scoped>
