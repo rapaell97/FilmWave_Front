@@ -53,7 +53,7 @@ a{
     text-align: center;
 }
 .movie-div:hover{
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 
 </style>

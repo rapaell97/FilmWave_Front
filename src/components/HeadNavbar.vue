@@ -1,5 +1,5 @@
 <template>
-    <nav :style="{backgroundColor: navBackgroundColor}">
+    <nav :style="{backgroundColor: navBackgroundColor, boxShadow: navShadow}">
         <RouterLink :to="{ name: 'home' }">
             <img src="@/assets/logo.png" alt="logo-img" class="logo-icon">
         </RouterLink>
@@ -35,8 +35,13 @@ const updateScroll = function() {
 
 const navBackgroundColor = computed(() => {
     const opacity = nowScroll.value > 0 ? 1 : 0.2
-    return `rgba(0, 0, 128, ${opacity})`
+    return `rgba(0, 0, 1, ${opacity})`
 })
+
+const navShadow = computed(() => {
+    const shadowOpacity = nowScroll.value > 0 ? 0.2 : 0;
+    return `0 4px 6px rgba(255, 255, 255, ${shadowOpacity})`;
+});
 
 onMounted(() => {
     window.addEventListener('scroll', updateScroll)
@@ -52,11 +57,11 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: navy;
     width: 100%;
-    height: 60px;
+    height: 70px;
     transition: background-color 0.3s ease-in-out;
     z-index: 1000;
+    /* box-shadow: 0 4px 6px rgba(255, 255, 255, 0.5); */
 }
 
 .right-nav{
@@ -74,7 +79,6 @@ nav{
 .logo-icon:hover{
     transform: scale(1.2);
 }
-
 
 .log-tag{
     color: aliceblue;

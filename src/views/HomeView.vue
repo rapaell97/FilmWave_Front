@@ -75,7 +75,7 @@ onMounted(() => {
 const scrollLeft = () => {
     if (slideContainer.value) {
         slideContainer.value.scrollBy({
-            left: -window.innerWidth * 0.975,
+            left: -window.innerWidth * 0.99,
             behavior: 'smooth'
         })
     }
@@ -84,7 +84,7 @@ const scrollLeft = () => {
 const scrollRight = () => {
     if (slideContainer.value) {
         slideContainer.value.scrollBy({
-            left: window.innerWidth * 0.975,
+            left: window.innerWidth * 0.99,
             behavior: 'smooth'
         })
     }
@@ -157,6 +157,7 @@ const scrollRight = () => {
     padding: 5px;
 }
 .category-name{
+    color: rgb(221, 217, 217);
     margin-left: 15px;
     margin-bottom: 10px;
 }
