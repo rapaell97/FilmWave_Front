@@ -30,6 +30,8 @@ onMounted(() => {
     padding-left: 40px;
     padding-right: 40px;
     justify-content: space-evenly;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 </style>

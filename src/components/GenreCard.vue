@@ -1,7 +1,6 @@
 <template>
     <RouterLink :to="{ name: 'genreDetail', params: { 'genreId' : genre.genre_id } }">
         <div class="genre-card"  @mouseover="isHovered = true" @mouseleave="isHovered = false" :style="cardStyle">
-            <!-- {{ genre.genre_id }} -->
             <h3>{{ genre.name }}</h3>
         </div>
     </RouterLink>
