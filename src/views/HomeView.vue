@@ -56,7 +56,7 @@ const scrollRight = () => {
 	padding: 10px;
 	cursor: pointer;
 	opacity: 20%;
-	border-radius: 20%;
+	border-radius: 0%;
 	transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 

@@ -64,7 +64,6 @@ const scrollRight = () => {
     padding: 10px;
     cursor: pointer;
     opacity: 20%;
-    border-radius: 20%;
     transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
@@ -72,11 +71,15 @@ const scrollRight = () => {
     position: absolute;
     top: 150px;
     z-index: 1;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
 }
 .btn-right{
     position: absolute;
     top:150px;
     right: 0px;
+    border-top-left-radius: 20%;
+    border-bottom-left-radius: 20%;
 }
 .btn-left:hover{
     opacity: 0.7;
