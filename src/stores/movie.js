@@ -12,7 +12,7 @@ export const useMovieStore = defineStore('movie', () => {
   const movieList = ref([])
   const movieRecommendList = ref([])
   const movieDetailList = ref([])
-  const preferenceList = ref([])
+  const groupMovieList = ref([])
   const trailerKey = ref('')
 
   const fetchMovie = function(genreId=''){
