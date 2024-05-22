@@ -7,6 +7,7 @@ import { useUserStore } from './user'
 export const useGroupStore = defineStore('group', () => {
   const API_URL = 'http://127.0.0.1:8000'
   const groupList = ref([])
+  const groupMovieList = ref([])
   const userstore = useUserStore()
 
   const fetchGroup = function(){
@@ -36,11 +37,12 @@ export const useGroupStore = defineStore('group', () => {
     })
     .then(res => {
       console.log(res.data)
+      groupMovieList.value = res.data
     })
     .catch(err => {
       console.log(err)
     })
   }
 
-  return { groupList, fetchGroup, API_URL, fetchGroupMovie }
+  return { groupList, fetchGroup, API_URL, fetchGroupMovie, groupMovieList }
 })

@@ -48,6 +48,8 @@
       >
       가입하기
     </button>
+
+    <GroupMovieList/>    
 </template>
 
 <script setup>
@@ -57,6 +59,7 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useGroupStore } from '@/stores/group'
 import { useUserStore } from '@/stores/user'
 import { formatDate2 } from '@/utils/datefomatter'
+import GroupMovieList from '@/components/GroupMovieList.vue'
 
 const route = useRoute()
 const router = useRouter()
