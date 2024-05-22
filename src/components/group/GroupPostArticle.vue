@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="article-div">
     <h3 style="cursor: pointer;">{{ post.id }}. {{ post.title }} ({{ post.comment_set.length }}) </h3>
     <p>작성자 : {{ post.user.username }}</p>
     <hr>
@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 const props = defineProps({
   post: Object
 })
@@ -15,5 +14,8 @@ const props = defineProps({
 </script>
 
 <style scoped>
+.article-div{
+  color: rgb(221, 217, 217);
+}
 
 </style>

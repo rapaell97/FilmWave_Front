@@ -21,7 +21,7 @@
     <div v-if="isPostCreateOpen" class="post-create">
       <form @submit.prevent="postCreate">
         <input type="text" placeholder="제목을 입력하세요" v-model="newPostTitle" class="input-title">
-        <textarea placeholder="게시글을 입력하세요.." v-model="newPostContent"></textarea>
+        <textarea placeholder="게시글을 입력하세요.." v-model="newPostContent" class="input-content"></textarea>
         <button>작성</button>
       </form>
       <button @click="postCreateClose">취소</button>
@@ -116,8 +116,8 @@ const postCreate = function() {
 .postBoard-div {
   width: 70%;
   height: 400px;
-  padding: 20px;
-  background-color: aliceblue;
+  padding: 5px 20px 20px 20px;
+  background-color: #343d3f;
   margin-bottom: 10px;
   overflow-y: auto;
 }
@@ -154,6 +154,12 @@ const postCreate = function() {
   height: 25px;
   margin-bottom: 5px;
   border: none;
+  background-color: #343d3f;
+  color: white;
+}
+.input-content{
+  background-color: #343d3f;
+  color: white;
 }
 textarea {
   width: 100%;
