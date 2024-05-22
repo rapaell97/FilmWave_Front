@@ -34,20 +34,24 @@ import { useUserStore } from '@/stores/user'
 import { useRoute } from 'vue-router'
 import { formatDate } from '@/utils/datefomatter'
 
+const props = defineProps({
+  movieId: Number
+})
+
 const starScores = ref([false, false, false, false, false])
 const numScore = ref(0)
 const reviewContent = ref('')
 
 const userstore = useUserStore()
 const route = useRoute()
-const movieId = ref(route.params.movieId)
+
 
 const reviewList = ref([])
 
 onMounted(() => {
     axios({
       method: 'GET',
-      url: `${userstore.API_URL}/movies/${movieId.value}/reviews/`,
+      url: `${userstore.API_URL}/movies/${props.movieId}/reviews/`,
     })
     .then(response => {
       console.log(response.data)
@@ -74,7 +78,7 @@ const reviewSubmit = function(){
     })
     axios({
       method: 'POST',
-      url: `${userstore.API_URL}/movies/${movieId.value}/reviews/`,
+      url: `${userstore.API_URL}/movies/${props.movieId}/reviews/`,
       headers:{
         Authorization: `Token ${userstore.token}`
       },

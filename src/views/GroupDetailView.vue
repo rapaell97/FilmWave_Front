@@ -190,7 +190,7 @@ const groupDivStyle = computed(() => {
 .group-box{
     width: 100%;
     height: 100%;
-    background-color: rgba(52, 61, 63, 0.65); ;
+    background-color: rgba(26, 30, 31, 0.7);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -262,8 +262,7 @@ const groupDivStyle = computed(() => {
 .info-btn-div{
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 .info-btn{
   width: 100px;
