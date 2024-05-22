@@ -5,10 +5,11 @@ import axios from 'axios'
 import { useUserStore } from './user'
 
 export const useGroupStore = defineStore('group', () => {
+  const userstore = useUserStore()
   const API_URL = 'http://127.0.0.1:8000'
   const groupList = ref([])
   const groupMovieList = ref([])
-  const userstore = useUserStore()
+  const groupPostList = ref([])
 
   const fetchGroup = function(){
     axios({
@@ -27,7 +28,6 @@ export const useGroupStore = defineStore('group', () => {
   }
 
   const fetchGroupMovie = function(groupId){
-    console.log(groupId)
     axios({
       method: 'GET',
       url: `${API_URL}/groups/${groupId}/movies/`,
@@ -44,5 +44,22 @@ export const useGroupStore = defineStore('group', () => {
     })
   }
 
-  return { groupList, fetchGroup, API_URL, fetchGroupMovie, groupMovieList }
+  const fetchGroupPost = function(groupId){
+    axios({
+      method: 'GET',
+      url: `${API_URL}/groups/${groupId}/posts/`,
+      headers: {
+        Authorization: `Token ${userstore.token}`
+      }
+    })
+    .then(res => {
+      console.log(res.data)
+      groupPostList.value = res.data
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  return { groupList, fetchGroup, API_URL, fetchGroupMovie, groupMovieList, fetchGroupPost, groupPostList }
 })
