@@ -11,7 +11,7 @@
           <div class="oneline-comment">
             <p>{{ comment.user.username }}: {{ comment.content }}</p>
             <button @click.stop="deleteComment(postArticle.id, comment.id)" class="comment-delete-btn">
-              <i class="fa-solid fa-x" style="color: #1e2729;"></i>
+              <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
           <hr>
