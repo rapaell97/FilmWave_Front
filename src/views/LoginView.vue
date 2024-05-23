@@ -38,42 +38,44 @@ const login = function(){
 </script>
 
 <style scoped>
+#username{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 30px;
+    background-color: #1e2729;
+    border:none;
+    color: rgb(221, 217, 217);
+}
+#password {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    height: 30px;
+    background-color: #1e2729;
+    border:none;
+    color: rgb(221, 217, 217);
+}
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin: auto;
-    color: black;
+    color: rgb(221, 217, 217);
     margin-top: 30px;
-    background-color: white;
+    background-color: #343d3f;
     border-radius: 20px;
-    width: 600px;   
-    height: 900px;
-
-    h1 {
-        margin-top: 50px;
-        font-size: 40px;
-    }
+    width: 500px;   
+    height: 500px;
+    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 0px -5px 10px rgba(99, 193, 132, 0.8), 5px 0px 10px rgba(99, 193, 132, 0.8), -5px 0px 10px rgba(99, 193, 132, 0.8);
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    label {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-    input {
-        height: 50px;
-        margin-bottom: 80px;
-        font-size: 20px;
-    }
 }
 .login-div{
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 400px;
-    height: 500px;
 }
 
 .signup-link {
@@ -83,12 +85,19 @@ const login = function(){
     align-items: center;
     a {
         text-decoration: none;
+        color: rgb(99, 193, 132);
     }
 }
 .login-button {
     border-style: none;
     background-color: rgb(99, 193, 132);
-    color: white;
+    color: rgb(221, 217, 217);
     font-size: 20px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.login-button:hover{
+    transform: scale(1.05);
 }
 </style>
