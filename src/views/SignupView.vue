@@ -47,20 +47,22 @@ const signup = function() {
     flex-direction: column;
     align-items: center;
     margin: auto;
-    color: black;
+    color: rgb(221, 217, 217);
     margin-top: 30px;
-    background-color: white;
+    background-color: #343d3f;
     border-radius: 20px;
-    width: 600px;
-    height: 900px;
-
-    h1 {
-        font-size: 40px;
-        padding: 30px;
-        margin-bottom: 100px;
-    }
+    width: 500px;   
+    height: 500px;
+    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 0px -5px 10px rgba(99, 193, 132, 0.8), 5px 0px 10px rgba(99, 193, 132, 0.8), -5px 0px 10px rgba(99, 193, 132, 0.8);
 }
-
+#userid, #password1, #password2{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 30px;
+    background-color: #1e2729;
+    border:none;
+    color: rgb(221, 217, 217);
+}
 .signup-form {
     display: flex;
     flex-direction: column;
@@ -92,7 +94,11 @@ const signup = function() {
     border-style: none;
     background-color: rgb(99, 193, 132);
     color: white;
-    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.signup-button:hover{
+    transform: scale(1.05);
 }
 
 </style>
