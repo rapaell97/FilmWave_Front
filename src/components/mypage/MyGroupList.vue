@@ -27,7 +27,7 @@ const route = useRoute()
 onMounted(() => {
   axios({
     method: 'GET',
-    url: `${userStore.API_URL}/groups/${route.params.username}/`,
+    url: `${userStore.API_URL}/groups/${route.params.username}/approved/`,
   })
   .then(res => {
     console.log(res.data)
