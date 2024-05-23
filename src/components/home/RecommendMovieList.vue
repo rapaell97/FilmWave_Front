@@ -110,7 +110,7 @@ const scrollRight = () => {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .movie-card {
