@@ -139,8 +139,6 @@ onMounted(() => {
     height: 100%;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    /* background-color: rgba(26, 30, 31, 0.7); */
 }
 .info-container{
     width: 80%;
@@ -148,7 +146,6 @@ onMounted(() => {
     margin-left: 50px;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 }
 .movie-img{
     height: 100%;

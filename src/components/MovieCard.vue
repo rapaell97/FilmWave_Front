@@ -37,6 +37,9 @@ const props = defineProps({
     align-items: center;
     overflow: hidden;
 }
+.img-div:hover{
+    box-shadow: 0 5px 8px rgb(99, 193, 132);
+}
 .movie-img {
     max-width: 100%;
     max-height: 100%;

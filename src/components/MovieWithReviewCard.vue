@@ -21,7 +21,7 @@
 
 <script setup>
 import { formatTimeDifference } from '@/utils/dateDifferenceFormatter'
-import { RouterLink, useRouter } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
 const props = defineProps({
@@ -40,30 +40,35 @@ const moveToDetail = function (movie_id) {
 <style scoped>
 
 .movie-img {
-    width: 200px;
-    height: 260px;
+    width: 175px;
+    height: 225px;
     border-radius: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.movie-img:hover{
+    transform: scale(1.1);
 }
 
 .container {
     display: flex;
     align-items: center;
-    border-radius: 10px;
-    width: 40%;
+    width: 470px;
     height: 300px;
-    margin: auto;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-div {
+/* div {
     color: white;
-}
+} */
 
 .review {
     border: 2px solid rgb(99, 193, 132, 0.7);
     background-color: rgb(27, 46, 34);
     width: 400px;
-    height: 250px;
+    height: 200px;
     border-radius: 10px;
     margin-left: 10px;
     padding: 10px;
