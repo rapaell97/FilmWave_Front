@@ -48,11 +48,12 @@ const fetchKewordResult = function() {
 <style scoped>
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); 
+    grid-template-columns: repeat(5, 1fr); 
     gap: 16px;
     width: 85%;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
+    box-shadow: -10px 0 20px -5px rgba(99, 193, 132, 0.6), 10px 0 20px -5px rgba(99, 193, 132, 0.6);
 }
 .search-txt{
   color: rgb(221, 217, 217);
