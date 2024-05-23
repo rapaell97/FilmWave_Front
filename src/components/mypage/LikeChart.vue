@@ -1,7 +1,5 @@
 <template>
-    <div v-if="chartData.labels">
-        <Doughnut :data="chartData" :options="options" />
-    </div>
+      <Doughnut :data="chartData" :options="options"/>
 </template>
 
 <script setup>
@@ -84,6 +82,6 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

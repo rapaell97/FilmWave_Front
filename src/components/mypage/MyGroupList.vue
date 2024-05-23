@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>내 그룹</h3>
+    <h2 style="margin-left: 20px; margin-bottom: 50px;">{{ userName }}님의 그룹</h2>
     <div class="group-container">
       <GroupCard 
         v-for="group in groups"
@@ -12,17 +12,17 @@
 </template>
 
 <script setup>
-import GroupCard from '../GroupCard.vue';
-
-import { useUserStore } from '@/stores/user';
 import axios from 'axios';
+import GroupCard from '../GroupCard.vue';
+import { useUserStore } from '@/stores/user';
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 const userStore = useUserStore()
 const groups = ref([])
-import { useRoute } from 'vue-router';
 
 const route = useRoute()
+const userName = ref(route.params.username)
 
 onMounted(() => {
   axios({

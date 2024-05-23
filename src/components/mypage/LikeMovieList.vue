@@ -1,6 +1,6 @@
 <template>
+  <h2 style="margin-bottom: 0; margin-left: 20px;">{{ userName }}님이 좋아하는 영화 목록</h2>
   <div class="container">
-    <h3>좋아하는 영화 목록</h3>
     <MovieCard 
       v-for="likeMovie in likeMovies"
       :key="likeMovie.movie_id"
@@ -22,6 +22,9 @@ const route = useRoute()
 const userStore = useUserStore()
 const likeMovies = ref([])
 
+const props = defineProps({
+  userName: String
+})
 
 onMounted(() => {
   axios({
