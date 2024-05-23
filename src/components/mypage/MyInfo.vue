@@ -1,13 +1,14 @@
 <template>
     <div>
-        username: {{ store.userName }}
+        {{ route.params.username }}님의 프로필
     </div>
 </template>
 
 <script setup>
 import { useUserStore } from '@/stores/user';
+import { useRoute } from 'vue-router';
 
-const store = useUserStore()
+const route = useRoute()
 </script>
 
 <style lang="scss" scoped>
