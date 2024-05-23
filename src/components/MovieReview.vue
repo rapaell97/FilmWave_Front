@@ -25,10 +25,12 @@
               <b style="font-size: 22px;">{{ review.score }}</b>
             </div>
             <p>{{ review.content }}</p>
-            <div class="review-user-info">
-              <p>유저 아이디</p>
-              <p style="opacity: 0.7;">{{ formatDate(review.created_at) }}</p>
-              <button v-if="review.user === userstore.userId" @click="reviewDelete(review.id)" style="height: 90%;">삭제</button>
+            <div class="bottom-info">
+              <div class="review-user-info">
+                <p>{{ review.user.username }}</p>
+                <p style="opacity: 0.7;">{{ formatDate(review.created_at) }}</p>
+              </div>
+              <button class="delete-button" v-if="review.user.id === userstore.userId" @click="reviewDelete(review.id)" style="height: 90%;">삭제</button>
             </div>
         </div>
     </div>
@@ -231,5 +233,13 @@ textarea {
 
 .review-list::-webkit-scrollbar-track {
   background-color: rgba(52, 61, 63, 0.2); /* 스크롤 바 트랙의 색상 및 투명도 */
+}
+
+.bottom-info {
+  display: flex;
+  justify-content: space-between;
+}
+.delete-button {
+  width: 50px;
 }
 </style>
