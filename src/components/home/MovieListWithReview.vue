@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="recent-review-div">
     <h3 class="category-name">최근 리뷰가 달린 영화</h3>
-    <div class="review-container" v-if="reviewsWithMovie">
-      <MovieWithReviewCard 
-        v-for="reviewWithMovie in reviewsWithMovie"
-        :key="reviewWithMovie.id"
-        :reviewWithMovie="reviewWithMovie"
-      />    
+    <div class="test-div">
+      <div class="review-container" v-if="reviewsWithMovie">
+        <MovieWithReviewCard 
+          v-for="reviewWithMovie in reviewsWithMovie"
+          :key="reviewWithMovie.id"
+          :reviewWithMovie="reviewWithMovie"
+        />    
+      </div>
     </div>
   </div>
 </template>
@@ -45,9 +47,19 @@ onMounted(() => {
 
 .review-container {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  margin: auto;
+}
+.recent-review-div{
+  /* border: 1px solid yellow; */
+  width: 100%;
+}
+.test-div{
+  /* border: 1px solid white; */
+  padding-left: 10px;
+  padding-right: 0;
+  width: 80%;
   margin: auto;
 }
 </style>

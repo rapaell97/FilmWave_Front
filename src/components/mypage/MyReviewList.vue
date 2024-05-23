@@ -42,8 +42,30 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.review-box{
-  
+.review-box {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow-y: auto;
+  max-height: 80vh; 
+  box-sizing: border-box;
+}
+.review-box::-webkit-scrollbar {
+  width: 8px; /* 스크롤바의 너비를 조정 */
 }
 
+.review-box::-webkit-scrollbar-track {
+  background: rgb(43, 44, 44); /* 트랙의 배경색 */
+}
+
+.review-box::-webkit-scrollbar-thumb {
+  background: rgb(99, 193, 132); /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바의 모서리를 둥글게 */
+}
+
+.review-box::-webkit-scrollbar-thumb:hover {
+  background: rgb(99, 193, 132); /* 스크롤바에 마우스를 올렸을 때 색상 */
+}
 </style>
