@@ -46,20 +46,18 @@ onMounted(() => {
 }
 
 .review-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 5px;
   margin: auto;
+  width: 95%;
 }
 .recent-review-div{
-  /* border: 1px solid yellow; */
-  width: 100%;
+  width: 98%;
+  margin: auto;
 }
 .test-div{
-  /* border: 1px solid white; */
-  padding-left: 10px;
-  padding-right: 0;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 </style>
