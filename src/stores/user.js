@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', () => {
     .then(response => {
       console.log(response.data)
       console.log("회원가입 성공")
-      router.push({name: 'preferenceservey'})
+      router.push({name: 'login'})
     })
     .catch(error => {
       console.log(error)
