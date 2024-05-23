@@ -22,7 +22,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/:username',
+      path: '/profile/:username',
       name: 'mypage',
       component: MyPageView
     },

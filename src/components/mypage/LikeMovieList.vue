@@ -12,10 +12,13 @@
 <script setup>
 import MovieCard from '../MovieCard.vue';
 
-import { useUserStore } from '@/stores/user';
 import axios from 'axios';
+import { useUserStore } from '@/stores/user';
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
+
+const route = useRoute()
 const userStore = useUserStore()
 const likeMovies = ref([])
 
@@ -23,10 +26,7 @@ const likeMovies = ref([])
 onMounted(() => {
   axios({
     method: 'GET',
-    url: `${userStore.API_URL}/movies/likes/`,
-    headers: {
-      Authorization: `Token ${userStore.token}`
-    }
+    url: `${userStore.API_URL}/movies/${route.params.username}/likes/`,
   })
   .then(res => {
     console.log(res.data)
