@@ -1,5 +1,5 @@
 <template>
-    <h1>그룹페이지</h1>
+    <h1 style="color: rgb(221, 217, 217); text-align: center; margin-bottom: 70px;">그룹 둘러보기</h1>
     <div class="container"> 
         <div class="groupList-div" v-if="groupstore.groupList.length">
             <GroupCard
