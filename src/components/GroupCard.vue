@@ -3,7 +3,6 @@
         <div class="group-div">
             <h3 class="group-title">{{ group.title }}</h3>
             <div class="img-div">
-                {{ group }}
                 <img v-if= "group.image === null" src="@/assets/group/default.png" alt="" class="group-img">
                 <img v-else :src="`${group.image}`" :alt="`${ group.id }`" class="group-img">
             </div>
@@ -30,12 +29,13 @@ const props = defineProps({
 .group-div{
     margin-left: 20px;
     margin-right: 20px;
-    background-image: url('@/assets/group/background.png');
+    background-color: #343d3f;
     width: 200px;
     height: 350px;
     border-radius: 3%;
     transition: transform 0.3s ease;
-    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 1px 3px 10px rgba(99, 193, 132, 0.8); 
+    padding: 15px;
+    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 0px -5px 10px rgba(99, 193, 132, 0.8), 5px 0px 10px rgba(99, 193, 132, 0.8), -5px 0px 10px rgba(99, 193, 132, 0.8);
 }
 .group-div:hover {
     transform: scale(1.02)
@@ -43,24 +43,25 @@ const props = defineProps({
 
 .img-div{
     width: 100%;
-    height: 50%;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
-
+    height: 45%;
 }
 .group-img{
     width: 100%;
     height: 100%;
+    border-radius: 8px;
+    filter: brightness(0.9);
 }
 a{
     text-decoration: none;
     color: black;
+    color: rgb(221, 217, 217);
 }
 .group-title{
     margin: 0;
     text-align: center;
-    color: black;
+    color: rgb(221, 217, 217);
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 .text-div{
     padding-left: 8px;
