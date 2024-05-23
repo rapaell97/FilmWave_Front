@@ -5,7 +5,6 @@ import axios from 'axios'
 import { useUserStore } from './user'
 
 export const useMovieStore = defineStore('movie', () => {
-  const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYzdjYTE1YjJmYjY0NmVmZmEyNzhkYmNlYTBhN2ZmNSIsInN1YiI6IjY2Mjc0NGFkZTg5NGE2MDE2NDNiNmIwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8ojNZptYmrdr0SLNqbb71r_P3QCQOctr2r3h-33fzBA'
   const API_URL = 'http://127.0.0.1:8000'
   const userstore = useUserStore()
 

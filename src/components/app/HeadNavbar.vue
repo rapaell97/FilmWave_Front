@@ -9,7 +9,7 @@
             </RouterLink>
             <b v-if="userstore.isLogin" @click="userstore.logout" class="log-tag">Logout</b>
             <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage', params: {'username': userstore.userName} }">
-                <i class="fa-solid fa-user nav-icon" style="color: #ffffff;"></i>
+                <b class="login-username">{{ userstore.userName }}</b><i class="fa-solid fa-user nav-icon" style="color: #ffffff;"></i>
             </RouterLink>
             <RouterLink :to="{ name: 'group' }">
                 <i class="fa-solid fa-users nav-icon" style="color: #ffffff;"></i>
@@ -62,9 +62,16 @@ nav{
     transition: background-color 0.3s ease-in-out;
     z-index: 1000;
 }
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.login-username{
+    margin-right: 10px;
+}
 
 .right-nav{
-    width: 180px;
+    width: 220px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -93,5 +100,4 @@ nav{
 .nav-icon:hover{
     transform: scale(1.2);
 }
-
 </style>

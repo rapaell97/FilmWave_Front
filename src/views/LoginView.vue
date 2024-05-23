@@ -71,6 +71,11 @@ const login = function(){
 .login-form {
     display: flex;
     flex-direction: column;
+    input {
+        height: 50px;
+        margin-bottom: 50px;
+        font-size: 20px;
+    }
 }
 .login-div{
     margin-left: auto;
@@ -80,7 +85,7 @@ const login = function(){
 
 .signup-link {
     display: flex;
-    margin-top: 50px;
+    margin-top: 25px;
     flex-direction: column;
     align-items: center;
     a {
