@@ -110,6 +110,7 @@ const scrollRight = () => {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
+  margin-top: 40px;
 }
 
 .movie-card {
@@ -120,6 +121,6 @@ const scrollRight = () => {
 .category-name {
   color: rgb(221, 217, 217);
   margin-left: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 </style>
