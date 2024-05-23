@@ -3,13 +3,13 @@
     <form class="create-form" ref="form" @submit.prevent="groupCreate">
       <div>
         <div class="group-div">
-          <label for="group-title" > </label>
+          <label for="group-title"></label>
           <input type="text" id="group_name" name="title" placeholder="그룹 이름을 입력해주세요.">
 
           <div class="file-input">
             <label for="file">
-              <i class="fa-solid fa-image file-icon" style="height: 130px;"></i>
-              <input type="file" accept="image/*" id="file" />
+              <i class="fa-solid fa-image file-icon" style="height: 130px;" @click="triggerFileInput"></i>
+              <input type="file" accept="image/*" id="file" ref="fileInput" @change="handleFileChange" style="display: none;" />
             </label>
           </div>
 
@@ -35,34 +35,46 @@ import { useUserStore } from '@/stores/user'
 const userstore = useUserStore()
 const router = useRouter()
 const form = ref(null)
+const fileInput = ref(null)
+const selectedFile = ref(null)
+
+const handleFileChange = () => {
+  const file = fileInput.value.files[0]
+  if (file) {
+    selectedFile.value = file
+  }
+}
+
+const triggerFileInput = () => {
+  fileInput.value.click()
+}
 
 const groupCreate = function(){
   const data = new FormData(form.value)
 
-    axios({
-      method: 'POST',
-      url: `${userstore.API_URL}/groups/`,
-      data,
-      headers: {
-        Authorization: `Token ${userstore.token}`
-      }
-    })
-    .then(response => {
-      form.value.reset()
-      router.push({name: 'group'})
-    })
-    .catch(error => {
-      console.log(error)
-    })
+  if (selectedFile.value) {
+    data.append('image', selectedFile.value)
+  }
+  axios({
+    method: 'POST',
+    url: `${userstore.API_URL}/groups/`,
+    data,
+    headers: {
+      Authorization: `Token ${userstore.token}`
+    }
+  })
+  .then(response => {
+    form.value.reset()
+    router.push({name: 'group'})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 }
 
 </script>
 
 <style scoped>
-input#file {
-  display: none;
-}
-
 h1 {
   color: white;
   text-align: center;
