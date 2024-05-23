@@ -21,12 +21,14 @@
     <div class="group-div" :style="groupDivStyle">
       <div class="group-box" v-if="group.admin">
         <div class="group-info">
-          <img src="@/assets/group/default.png" alt="" class="group-img">
+          <div class=group-img-div>
+            <img :src="group.image" alt="" class="group-img">
+          </div>
           <div class="info-detail">
               <h1>{{ group.title }}</h1>
               <p>소개 : {{ group.description }}</p>
               <p>운영자 : {{ group.admin.username }}</p>
-              <p>개설일자 : {{ formatDate2(group.create_at) }}</p>
+              <p>개설일자 : {{ formatDate2(group.created_at) }}</p>
           </div>
         </div>
         <div class="info-btn-div">
@@ -210,8 +212,13 @@ const groupDivStyle = computed(() => {
   color: rgb(221, 217, 217);
 }
 
+.group-img-div{
+  width: 180px;
+  height: 70%
+}
 .group-img{
-    width: 150px;
+    width: 100%;
+    height: 100%;
 }
 .modal-overlay {
   position: fixed;
@@ -272,5 +279,8 @@ const groupDivStyle = computed(() => {
   background-color: rgba(99, 193, 132);
   border: none;
   font-weight: bold;
+}
+.info-btn:hover{
+  cursor: pointer;
 }
 </style>
