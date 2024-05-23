@@ -1,28 +1,36 @@
 <template>
-    <h1>{{ movieId }}영화 리뷰</h1>
-    <div class="review-create">
-        <form @submit.prevent="reviewSubmit">
-            <div class="star-div">
-                <div v-for="(score, idx) in starScores" :key="idx" @click="starClick(idx)">
-                    <img v-if="starScores[idx]===false" src="@/assets/starScore1.png" :alt="`reviewstar${idx}`">
-                    <img v-else src="@/assets/starScore2.png" :alt="`reviewstar${idx}`">
-                </div>
-            </div>
-            <textarea v-model="reviewContent"></textarea>
-            <input type="submit">
-        </form>
+    <div class="review-box">
+      <div class="review-create">
+        <h1>관람평 작성하기</h1>
+          <form @submit.prevent="reviewSubmit">
+              <div class="star-div">
+                  <div v-for="(score, idx) in starScores" :key="idx" @click="starClick(idx)">
+                      <button v-if="starScores[idx]===false" class="icon-btn"><i class="fa-regular fa-star" style="color: rgba(99, 193, 132); height: 50px;"></i></button>
+                      <button v-else class="icon-btn"><i class="fa-solid fa-star" style="color: rgba(99, 193, 132); height: 50px;"></i></button>
+                  </div>
+              </div>
+              <div class="review-create-input">
+                <textarea v-model="reviewContent"></textarea>
+                <input type="submit" value="작성" class="review-create-btn">
+              </div>
+          </form>
+      </div>
     </div>
 
     <div class="review-list">
-        <h3>{{ reviewList.length }}개의 리뷰</h3>
-        <div v-for="review in reviewList">
-            <span><img src="@/assets/starScore2.png" alt="">{{ review.score }}</span>
+        <h3 style="margin: 0;">{{ reviewList.length }}개의 리뷰</h3>
+        <div v-for="review in reviewList" class="review-content">
+            <div class="score-div">
+              <i class="fa-solid fa-star" style="color: rgba(99, 193, 132); height: 22px;"></i>
+              <b style="font-size: 22px;">{{ review.score }}</b>
+            </div>
             <p>{{ review.content }}</p>
-            <p>{{ formatDate(review.create_at) }}</p>
-            <button v-if="review.user === userstore.userId" @click="reviewDelete(review.id)">삭제</button>
-            <p>sdfsdf{{ userstore.userId }}</p>
-            {{ review.user }}
-            <hr>
+            <div class="review-user-info">
+              <p>유저 아이디</p>
+              <p style="opacity: 0.7;">{{ formatDate(review.created_at) }}</p>
+              <button v-if="review.user === userstore.userId" @click="reviewDelete(review.id)" style="height: 90%;">삭제</button>
+            </div>
+
         </div>
     </div>
 </template>
@@ -43,8 +51,6 @@ const numScore = ref(0)
 const reviewContent = ref('')
 
 const userstore = useUserStore()
-const route = useRoute()
-
 
 const reviewList = ref([])
 
@@ -126,9 +132,90 @@ const reviewDelete = function(reviewId) {
 }
 
 textarea {
-    width: 80%;
-    height: 6.25em;
+    width: 1000px;
+    height: 3em;
     border: none;
     resize: none;
+    font-size: 20px;
+    background-color: #343d3f;
+    color: aliceblue;
+    /* border-radius: 15%; */
+}
+
+.icon-btn{
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  background-color: rgb(0,0,0,0);
+  border: none;
+  margin-right: 10px;
+}
+
+.review-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  color: rgb(221, 217, 217);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  /* border: solid 1px salmon; */
+  /* background-color: #343d3f; */
+}
+
+.review-list{
+    /* border: solid 1px salmon; */
+    width: 70%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #343d3f;
+    box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7);
+    color: rgb(221, 217, 217);
+}
+
+.review-create-btn{
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  background-color: rgb(99, 193, 132);
+  border: none;
+  border-radius: 5%;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+
+.review-create-btn:hover{
+  box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7);
+  border: 2px solid rgb(157, 233, 208);
+}
+
+.review-create-input{
+  display: flex;
+  align-items: center;
+}
+.review-content{
+  width: 70%;
+  margin: auto;
+  /* border: 1px solid salmon; */
+  background-color: #1e2729;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.score-div{
+  display: flex;
+  align-items: center;
+}
+.review-user-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  /* border: 1px solid salmon; */
 }
 </style>

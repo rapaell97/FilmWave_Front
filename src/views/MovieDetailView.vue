@@ -1,6 +1,6 @@
 <template>
     <div>
-        <iframe width="100%" height="300" :src="`https://www.youtube.com/embed/${moviestore.trailerKey}?autoplay=1&controls=0&roof=1&playlist=${moviestore.trailerKey}&mute=1`" allow="autoplay" frameborder="0"></iframe>
+        <iframe width="100%" height="400" :src="`https://www.youtube.com/embed/${moviestore.trailerKey}?autoplay=1&controls=0&roof=1&playlist=${moviestore.trailerKey}&mute=1`" allow="autoplay" frameborder="0"></iframe>
     </div>
     <div class="info-box" :style="infoBoxStyle">
         <div class="info-div">
