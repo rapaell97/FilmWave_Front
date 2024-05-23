@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h3>내가 쓴 리뷰</h3>
-    <MovieWithReviewCard 
-      v-for="review in reviews"
-      :key="review.id"
-      :reviewWithMovie="review"
-    />
-  </div>
+    <h2 style="margin-left: 20px; margin-top: 60px;">{{ userName }}님이 작성한 리뷰</h2>
+    <div class="review-box">
+      <MovieWithReviewCard 
+        v-for="review in reviews"
+        :key="review.id"
+        :reviewWithMovie="review"
+      />
+    </div>
+    </div>
 </template>
 
 <script setup>
@@ -21,7 +23,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 const userStore = useUserStore()
 const reviews = ref([])
-
+const userName = ref(route.params.username)
 
 onMounted(() => {
   axios({
@@ -40,5 +42,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.review-box{
+  
+}
 
 </style>

@@ -139,12 +139,10 @@ h1 {
   border: none;
 }
 
-
 .group-div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     padding: 20px;
     background-color: #343d3f;
     width: 350px;
