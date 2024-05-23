@@ -43,11 +43,6 @@ const cardStyle = computed(() => {
     transition: transform 0.3s ease;
 }
 
-/* .genre-card:hover{
-    transform: scale(1.1);
-    background-image: url(`@/assets/genre_${genre.genre_id}.png`);
-} */
-
 a{
     text-decoration: none;
     color: aliceblue
