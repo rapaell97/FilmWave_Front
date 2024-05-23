@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const errorMessage = ref('')
   const userName = ref('')
   const userId = ref('')
-  
+    
   const signup = function(payload){
     const { username, password1, password2 } = payload
   if( password1 !== password2 ) {
@@ -92,5 +92,7 @@ export const useUserStore = defineStore('user', () => {
       console.log(err)
     })
   }
+
+
   return { isLogin, signup, login, logout, token, errorMessage, userName, API_URL, userId }
 }, { persist: true })

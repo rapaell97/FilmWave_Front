@@ -12,9 +12,8 @@
                     <p class="info-txt" style="padding-bottom: 15px;">평점: {{ average(moviestore.movieDetailList.vote_average) }}</p>
                     <p class="info-txt">줄거리</p>
                     <p class="info-txt">{{ moviestore.movieDetailList.overview }}</p>
-                    <i v-if="!isLike" @click="movieLike" class="fa-regular fa-heart fa-2xl" style="color: rgba(99, 193, 132);"></i>
-                    <i v-else @click="movieLike" class="fa-solid fa-heart" style="color: rgba(99, 193, 132);"></i>
-                    <!-- <p v-else @click="movieLike">안좋아요버튼</p> -->
+                    <button v-if="!isLike" @click="movieLike" class="like-btn"><i class="fa-regular fa-heart fa-2xl" style="color: rgba(99, 193, 132);"></i></button>
+                    <button v-else @click="movieLike" class="like-btn"><i class="fa-solid fa-heart fa-2xl" style="color: rgba(99, 193, 132);"></i></button>
                 </div>
             </div>
         </div>
@@ -38,6 +37,7 @@ const moviestore = useMovieStore()
 const userstore = useUserStore()
 const movieId = ref(route.params.movieId)
 const isLike = ref(false)
+const myMovieList = ref([])
 
 const infoBoxStyle = computed(() => {
     return {
@@ -49,12 +49,7 @@ const infoBoxStyle = computed(() => {
 })
 
 const movieLike = function() {
-    moviestore.movieDetailList.like_users.forEach(user => {
-        if (user.username === moviestore.username){
-            isLike.value = true
-        }
-    })
-    
+
     if (isLike.value === true){
         axios({
             method: 'DELETE',
@@ -89,21 +84,43 @@ const movieLike = function() {
     }
 }
 
+const fetchMyMovie = function(){
+    axios({
+      method: 'GET',
+      url: `${moviestore.API_URL}/movies/likes/`,
+      headers: {
+        Authorization: `Token ${userstore.token}`
+      }
+    })
+    .then(response => {
+      console.log(response.data)
+      response.data.forEach(res => {
+        if(res.movie_id === movieId.value){
+            isLike.value = true
+        }
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
 onMounted(() => {
     moviestore.fetchMovieDetail(movieId.value)
     moviestore.fetchTrailer(movieId.value)
+    fetchMyMovie()
 })
 </script>
 
 <style scoped>
 iframe{
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 .info-box{
     display: flex;
     margin: auto;
     width: 95%;
-    height: 400px;
+    height: 530px;
     box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7)
 }
 .info-div{
@@ -120,7 +137,6 @@ iframe{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid salmon; */
 }
 .movie-img{
     height: 100%;
@@ -141,6 +157,12 @@ h3, p{
 .info-txt-div{
     padding-left: 20px;
     padding-right: 20px;
+}
+.like-btn{
+    cursor: pointer;
+    border: none;
+    background-color: rgb(221, 217, 217, 0);
+    margin-top: 5px;
 }
 
 </style>
