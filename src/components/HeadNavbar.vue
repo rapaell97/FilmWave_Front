@@ -8,7 +8,7 @@
                 <b class="log-tag">Login</b>
             </RouterLink>
             <b v-if="userstore.isLogin" @click="userstore.logout" class="log-tag">Logout</b>
-            <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage' }">
+            <RouterLink v-if="userstore.isLogin" :to="{ name: 'mypage', params: {'username': userstore.userName} }">
                 <i class="fa-solid fa-user nav-icon" style="color: #ffffff;"></i>
             </RouterLink>
             <RouterLink :to="{ name: 'group' }">

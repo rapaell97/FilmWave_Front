@@ -11,7 +11,9 @@
             </div>
             <div class="content-container">
                 <p class="content">{{ review.content }}</p>
-                <p class="writer">{{ writer.username }}</p>
+                <RouterLink :to="{name:'mypage', params: {'username': writer.username} }" class="writer">
+                    {{ writer.username }}
+                </RouterLink>
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
 
 <script setup>
 import { formatTimeDifference } from '@/utils/dateDifferenceFormatter'
-import { useRouter } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
 const router = useRouter()
 const props = defineProps({
