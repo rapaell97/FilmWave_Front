@@ -4,7 +4,6 @@ import MyPageView from '@/views/MyPageView.vue'
 import SignupView from '@/views/SignupView.vue'
 import LoginView from '@/views/LoginView.vue'
 import MovieDetailView from '@/views/MovieDetailView.vue'
-import PreferenceSurveyView from '@/views/PreferenceSurveyView.vue'
 import GenreDetailView from '@/views/GenreDetailView.vue'
 import GroupView from '@/views/GroupView.vue'
 import GroupCreateView from '@/views/GroupCreateView.vue'
@@ -30,11 +29,6 @@ const router = createRouter({
       path: '/signup',
       name: 'signup',
       component: SignupView
-    },
-    {
-      path: '/preferenceServey',
-      name: 'preferenceservey',
-      component: PreferenceSurveyView
     },
     {
       path: '/login',
