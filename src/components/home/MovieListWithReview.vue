@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="category-name">최근에 리뷰가 달린 영화</h3>
+    <h3 class="category-name">최근 리뷰가 달린 영화</h3>
     <div class="review-container" v-if="reviewsWithMovie">
       <MovieWithReviewCard 
         v-for="reviewWithMovie in reviewsWithMovie"
@@ -39,12 +39,15 @@ onMounted(() => {
 .category-name {
   color: rgb(221, 217, 217);
   font-size: 25px;
-  margin-left: 15px;
+  margin-left: 25px;
   margin-bottom: 10px;
 }
 
 .review-container {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
+  margin: auto;
 }
 </style>

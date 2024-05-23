@@ -4,8 +4,8 @@
         <div class="review">
             <div class="score-container">
                 <div class="score-container2">
-                    <img src="@/assets/starScore2.png" alt="star">
-                    <p class="score">{{ review.score }}</p>
+                    <i class="fa-solid fa-star fa-xl" style="color: #df3030;"></i>
+                    <h2 class="score">{{ review.score }}</h2>
                 </div>
                 <p>{{ formatTimeDifference(review.created_at) }}</p>
             </div>
@@ -39,16 +39,20 @@ const moveToDetail = function (movie_id) {
 
 <style scoped>
 
-img {
+.movie-img {
+    width: 200px;
+    height: 260px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .container {
-    border-radius: 10px;
-    width: 45%;
-    height: 300px;
     display: flex;
-    margin: 30px;
+    align-items: center;
+    border-radius: 10px;
+    width: 40%;
+    height: 300px;
+    margin: auto;
 }
 
 div {
@@ -58,26 +62,29 @@ div {
 .review {
     border: 2px solid rgb(99, 193, 132, 0.7);
     background-color: rgb(27, 46, 34);
-    width: 100%;
+    width: 400px;
+    height: 250px;
     border-radius: 10px;
     margin-left: 10px;
+    padding: 10px;
 }
 
 .score-container {
     display: flex;
     justify-content: space-between;
-    img {
-        width:40px;
-        height: 40px;
-    }
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .score-container2 {
     display: flex;
+    align-items: center;
 }
 
 .score {
-    font-size: 20px;
+    margin:0;
+    padding-left: 5px;
 }
 
 .content-container {
@@ -86,6 +93,7 @@ div {
 
 .content {
     font-size: 25px;
+    margin: 0;
 }
 
 .writer {

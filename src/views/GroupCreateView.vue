@@ -1,30 +1,28 @@
 <template>
-  <h1>그룹 생성</h1>
+  <h1>당신의 그룹을 생성하세요</h1>
     <form class="create-form" ref="form" @submit.prevent="groupCreate">
       <div>
         <div class="group-div">
           <label for="group-title" > </label>
           <input type="text" id="group_name" name="title" placeholder="그룹 이름을 입력해주세요.">
-          <div class="img-div">
-              <!-- <img v-if= "group.image === null" src="@/assets/group/default.png" alt="" class="group-img"> -->
-              <img src="@/assets/group/default.png" alt="" class="group-img">
-              <!-- <img v-else :src="`${group.image}`" :alt="`${ group.id }`" class="group-img"> -->
-          </div>
+
           <div class="file-input">
-              <label for="group_img">그룹 이미지</label>
-              <input type="file" id="group_img" name="image"/>
+            <label for="file">
+              <i class="fa-solid fa-image file-icon" style="height: 130px;"></i>
+              <input type="file" accept="image/*" id="file" />
+            </label>
           </div>
-          <div class="text-div">
-              <label id="group-description" for="group_description" ></label>
-              <input type="text" id="group_description" name="description"  placeholder="그룹 소개를 입력해주세요.">
-              <p><i class="fa-solid fa-crown"></i>{{ userstore.userName }}</p>
-              <p><i class="fa-solid fa-users"></i>0</p>
+
+          <div class="description-input">
+            <label id="group-description" for="group_description" ></label>
+            <input type="text" id="group_description" name="description"  placeholder="그룹 소개를 입력해주세요.">
           </div>
+          
+          <button class="create-button">생성</button>
+
         </div>
       </div>
-      <div>
-        <button class="create-button">생성하기</button>
-      </div>
+
     </form>
 </template>
 
@@ -61,31 +59,55 @@ const groupCreate = function(){
 </script>
 
 <style scoped>
+input#file {
+  display: none;
+}
 
 h1 {
   color: white;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .create-form {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-
-.create-button
 .file-input {
-  label {
-    font-size: 20px;
-  }
+  width: 80%;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(99, 193, 132);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.description-input{
+  width: 90%;
+  height: 200px;
+}
+
+.file-input:hover{
+  cursor: pointer;
+}
+.file-icon:hover{
+  cursor: pointer;
 }
 
 #group_name {
-  width: 98%;
+  width: 90%;
   height: 50px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  font-size: 20px
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  color: rgb(221, 217, 217);
+  background-color: #1e2729;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #group_name::placeholder {
@@ -93,58 +115,57 @@ h1 {
 }
 
 #group_description {
-  width: 98%;
-  height: 50px;
-  font-size: 20px
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font-size: 20px;
+  color: rgb(221, 217, 217);
+  background-color: #1e2729;
+  border: none;
 }
 
 
 .group-div{
-    margin-left: 20px;
-    margin-right: 20px;
-    background-image: url('@/assets/group/background.png');
-    width: 400px;
-    height: 700px;
-    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #343d3f;
+    width: 350px;
+    height: 600px;
+    border-radius: 5%;
     transition: transform 0.3s ease;
     font-size: 30px;
-    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 1px 3px 10px rgba(99, 193, 132, 0.8); 
-}
-
-.group-div:hover {
-    transform: scale(1.02)
+    box-shadow: 0px 5px 10px rgba(99, 193, 132, 0.8), 0px -5px 10px rgba(99, 193, 132, 0.8), 5px 0px 10px rgba(99, 193, 132, 0.8), -5px 0px 10px rgba(99, 193, 132, 0.8);
 }
 
 .img-div{
-    width: 100%;
+    width: 80%;
     height: 50%;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
-
+    padding: 10px;
 }
 .group-img{
     width: 100%;
     height: 100%;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
-.group-title{
-    margin: 0;
-    text-align: center;
-    color: black;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
+
 .text-div{
     padding-left: 8px;
     padding-right: 8px;
 }
 
 .create-button {
+  cursor: pointer;
   border-style: none;
   background-color: rgb(99, 193, 132);
   color: white;
   font-size: 20px;
+  margin-top: 20px;
+  border-radius: 5%;
+  transition: transform 0.2s ease
+}
+
+.create-button:hover{
+  transform: scale(1.1);
 }
 </style>

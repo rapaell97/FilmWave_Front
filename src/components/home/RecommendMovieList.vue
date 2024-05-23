@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="category-name">당신이 좋아할 만한 영화</h2>
+    <h2 class="category-name">당신에게 추천하는 영화</h2>
     <div class="container">
       <button class="scroll-btn btn-left" @click="scrollLeft"><i class="fa-solid fa-arrow-left"></i></button>
       <div class="list-div" ref="slideContainer">
@@ -119,7 +119,7 @@ const scrollRight = () => {
 
 .category-name {
   color: rgb(221, 217, 217);
-  margin-left: 15px;
+  margin-left: 25px;
   margin-bottom: 10px;
 }
 </style>

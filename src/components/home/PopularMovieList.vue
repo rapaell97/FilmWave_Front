@@ -118,7 +118,7 @@ const scrollRight = () => {
 }
 .category-name{
     color: rgb(221, 217, 217);
-    margin-left: 15px;
+    margin-left: 25px;
     margin-bottom: 10px;
 }
 </style>
