@@ -101,6 +101,8 @@ h1 {
 .description-input{
   width: 90%;
   height: 200px;
+  display: flex;
+  justify-content: center;
 }
 
 .file-input:hover{
@@ -129,7 +131,8 @@ h1 {
 #group_description {
   width: 100%;
   height: 100%;
-  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
   color: rgb(221, 217, 217);
   background-color: #1e2729;
@@ -141,6 +144,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: center; */
     padding: 20px;
     background-color: #343d3f;
     width: 350px;
