@@ -10,9 +10,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
 import axios from 'axios';
 import { useUserStore } from '@/stores/user';
+import { useRoute } from 'vue-router';
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
+const route = useRoute()
 const userStore = useUserStore()
 
 const chartData = ref({
@@ -27,7 +29,7 @@ const chartData = ref({
 
 const options = {
   responsive: true,
-  maintainAspectRatio: false, // 그래프의 크기를 조절하기 위해 사용
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'left',
@@ -57,7 +59,7 @@ function getRandomColor() {
 onMounted(() => {
     axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/movies/likes/genre-frequency/',
+        url: `http://127.0.0.1:8000/movies/${route.params.username}/likes/genre-frequency/`,
         headers: {
             'Authorization': `Token ${userStore.token}`
         }
