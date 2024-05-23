@@ -30,7 +30,6 @@
               <p style="opacity: 0.7;">{{ formatDate(review.created_at) }}</p>
               <button v-if="review.user === userstore.userId" @click="reviewDelete(review.id)" style="height: 90%;">삭제</button>
             </div>
-
         </div>
     </div>
 </template>
@@ -139,7 +138,6 @@ textarea {
     font-size: 20px;
     background-color: #343d3f;
     color: aliceblue;
-    /* border-radius: 15%; */
 }
 
 .icon-btn{
@@ -168,15 +166,18 @@ textarea {
 }
 
 .review-list{
-    /* border: solid 1px salmon; */
+    border: solid 1px salmon;
     width: 70%;
+    height: 500px;
     margin-top: 50px;
+    /* margin-bottom: 400px; */
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
     background-color: #343d3f;
     box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7);
     color: rgb(221, 217, 217);
+    overflow-y: auto;
 }
 
 .review-create-btn{
@@ -217,5 +218,18 @@ textarea {
   align-items: center;
   width: 300px;
   /* border: 1px solid salmon; */
+}
+
+.review-list::-webkit-scrollbar {
+  width: 10px; /* 스크롤 바의 너비 */
+}
+
+.review-list::-webkit-scrollbar-thumb {
+  background-color: rgba(228, 235, 236, 0.5); /* 스크롤 바 손잡이의 색상 및 투명도 */
+  border-radius: 10px; /* 스크롤 바 손잡이의 모서리 반경 */
+}
+
+.review-list::-webkit-scrollbar-track {
+  background-color: rgba(52, 61, 63, 0.2); /* 스크롤 바 트랙의 색상 및 투명도 */
 }
 </style>

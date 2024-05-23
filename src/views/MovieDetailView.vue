@@ -1,22 +1,22 @@
 <template>
-    <div>
-        <iframe width="100%" height="400" :src="`https://www.youtube.com/embed/${moviestore.trailerKey}?autoplay=1&controls=0&roof=1&playlist=${moviestore.trailerKey}&mute=1`" allow="autoplay" frameborder="0"></iframe>
-    </div>
     <div class="info-box" :style="infoBoxStyle">
         <div class="info-div">
             <div class="info-container">
                 <img class="movie-img" :src="`https://image.tmdb.org/t/p/original/${moviestore.movieDetailList.poster_path}`" alt="" >
                 <div class="info-txt-div">
                     <h3 class="title-txt">{{ moviestore.movieDetailList.title }}</h3>
-                    <p class="info-txt">개봉일: {{ moviestore.movieDetailList.release_date }}</p>
-                    <p class="info-txt" style="padding-bottom: 15px;">평점: {{ average(moviestore.movieDetailList.vote_average) }}</p>
-                    <p class="info-txt">줄거리</p>
+                    <p class="info-txt" style="margin-bottom: 20px;">
+                        {{ formatDate3(moviestore.movieDetailList.release_date) }} | {{ average(moviestore.movieDetailList.vote_average) }} | {{ (moviestore.movieDetailList.genres && moviestore.movieDetailList.genres.length > 0) ? moviestore.movieDetailList.genres[0].name : 'Unknown Genre' }}
+                    </p>
                     <p class="info-txt">{{ moviestore.movieDetailList.overview }}</p>
                     <button v-if="!isLike" @click="movieLike" class="like-btn"><i class="fa-regular fa-heart fa-2xl" style="color: rgba(99, 193, 132);"></i></button>
                     <button v-else @click="movieLike" class="like-btn"><i class="fa-solid fa-heart fa-2xl" style="color: rgba(99, 193, 132);"></i></button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="video-div">
+        <iframe width="60%" height="90%" :src="`https://www.youtube.com/embed/${moviestore.trailerKey}?autoplay=1&controls=0&roof=1&playlist=${moviestore.trailerKey}&mute=1`" allow="autoplay" frameborder="0"></iframe>
     </div>
     <MovieReview
     :movieId="movieId"
@@ -31,6 +31,7 @@ import { useMovieStore } from '@/stores/movie'
 import { useUserStore } from '@/stores/user'
 import MovieReview from '@/components/MovieReview.vue'
 import { average } from '@/utils/voteaverage'
+import { formatDate3 } from '@/utils/datefomatter'
 
 const route = useRoute()
 const moviestore = useMovieStore()
@@ -40,13 +41,16 @@ const isLike = ref(false)
 const myMovieList = ref([])
 
 const infoBoxStyle = computed(() => {
+    const imageUrl = `url(https://image.tmdb.org/t/p/original/${moviestore.movieDetailList.backdrop_path})`;
+    const gradient = 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0.5),rgba(0,0,0,0) 100%)';
+    
     return {
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${moviestore.movieDetailList.backdrop_path})`,
+        backgroundImage: `${gradient}, ${imageUrl}`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
     }
-})
+});
 
 const movieLike = function() {
 
@@ -113,14 +117,21 @@ onMounted(() => {
 </script>
 
 <style scoped>
-iframe{
-    margin-bottom: 25px;
+.video-div{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid salmon; */
 }
 .info-box{
     display: flex;
     margin: auto;
-    width: 95%;
-    height: 530px;
+    width: 100%;
+    height: 850px;
     box-shadow: 0 0 10px 5px rgba(99, 193, 132, 0.7)
 }
 .info-div{
@@ -128,15 +139,16 @@ iframe{
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: rgba(26, 30, 31, 0.7);
+    /* justify-content: center; */
+    /* background-color: rgba(26, 30, 31, 0.7); */
 }
 .info-container{
     width: 80%;
     height: 300px;
+    margin-left: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .movie-img{
     height: 100%;
@@ -155,6 +167,7 @@ h3, p{
     margin-bottom: 0;
 }
 .info-txt-div{
+    width: 400px;
     padding-left: 20px;
     padding-right: 20px;
 }

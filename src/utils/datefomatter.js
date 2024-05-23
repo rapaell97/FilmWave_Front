@@ -13,7 +13,7 @@ export function formatDate(dateString) {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
 
-  export function formatDate2(dateString) {
+export function formatDate2(dateString) {
     // Date 객체를 생성
     const date = new Date(dateString);
   
@@ -24,4 +24,15 @@ export function formatDate(dateString) {
   
     // 원하는 형식으로 포맷팅하여 반환
     return `${year}-${month}-${day}`;
+  }
+
+export function formatDate3(dateString) {
+    // Date 객체를 생성
+    const date = new Date(dateString);
+  
+    // 연도, 월, 일, 시간, 분을 추출
+    const year = date.getFullYear();
+  
+    // 원하는 형식으로 포맷팅하여 반환
+    return `${year}`;
   }
