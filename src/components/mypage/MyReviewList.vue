@@ -26,7 +26,7 @@ const reviews = ref([])
 onMounted(() => {
   axios({
     method: 'GET',
-    url: `${userStore.API_URL}/movies/${route.params.username}/reviews/`,
+    url: `${userStore.API_URL}/movies/${route.params.username}/user-reviews/`,
   })
   .then(res => {
     console.log(res.data)
