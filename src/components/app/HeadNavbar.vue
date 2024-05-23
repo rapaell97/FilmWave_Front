@@ -61,7 +61,6 @@ nav{
     height: 70px;
     transition: background-color 0.3s ease-in-out;
     z-index: 1000;
-    /* box-shadow: 0 4px 6px rgba(255, 255, 255, 0.5); */
 }
 
 .right-nav{

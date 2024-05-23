@@ -3,6 +3,7 @@
         <div class="group-div">
             <h3 class="group-title">{{ group.title }}</h3>
             <div class="img-div">
+                {{ group }}
                 <img v-if= "group.image === null" src="@/assets/group/default.png" alt="" class="group-img">
                 <img v-else :src="`${group.image}`" :alt="`${ group.id }`" class="group-img">
             </div>
