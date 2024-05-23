@@ -1,10 +1,11 @@
 <template>
 	<MovieSlidebar />
 	<GenreBar />
-	<RecommendMovieList />
+	<template v-if="userStore.token">
+		<RecommendMovieList />
+	</template>
 	<PopularMovieList />
 	<MovieListWithReview />
-	<!-- <Footer /> -->
 </template>
 
 <script setup>
@@ -13,7 +14,10 @@ import MovieSlidebar from '@/components/MovieSlideBar.vue'
 import PopularMovieList from '@/components/home/PopularMovieList.vue'
 import RecommendMovieList from '@/components/home/RecommendMovieList.vue'
 import MovieListWithReview from '@/components/home/MovieListWithReview.vue'
-import Footer from '@/components/app/Footer.vue'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
+
 
 </script>
 
