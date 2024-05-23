@@ -21,24 +21,24 @@ const props = defineProps({
 .movie-div {
     width: 200px; 
     height: 400px;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0;
+    margin: 20px;
     box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .img-div {
     width: 100%;
-    height: 300px;
+    height: 270px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 .img-div:hover{
-    box-shadow: 0 5px 8px rgb(99, 193, 132);
+    box-shadow: 0 4px 4px -1px rgba(99, 193, 132, 1);
 }
 .movie-img {
     max-width: 100%;

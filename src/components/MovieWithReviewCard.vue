@@ -60,9 +60,9 @@ const moveToDetail = function (movie_id) {
     padding-right: 10px;
 }
 
-/* div {
+div {
     color: white;
-} */
+}
 
 .review {
     border: 2px solid rgb(99, 193, 132, 0.7);
