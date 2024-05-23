@@ -20,15 +20,14 @@ import { onMounted, ref } from 'vue';
 
 const userStore = useUserStore()
 const groups = ref([])
+import { useRoute } from 'vue-router';
 
+const route = useRoute()
 
 onMounted(() => {
   axios({
     method: 'GET',
-    url: `${userStore.API_URL}/groups/my/`,
-    headers: {
-      Authorization: `Token ${userStore.token}`
-    }
+    url: `${userStore.API_URL}/groups/${route.params.username}/`,
   })
   .then(res => {
     console.log(res.data)
