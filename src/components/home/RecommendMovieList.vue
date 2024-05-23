@@ -27,7 +27,7 @@ onMounted(() => {
 const scrollLeft = () => {
   if (slideContainer.value) {
     slideContainer.value.scrollBy({
-      left: -window.innerWidth * 0.99,
+      left: -window.innerWidth * 0.3,
       behavior: 'smooth'
     })
   }
@@ -36,7 +36,7 @@ const scrollLeft = () => {
 const scrollRight = () => {
   if (slideContainer.value) {
     slideContainer.value.scrollBy({
-      left: window.innerWidth * 0.99,
+      left: window.innerWidth * 0.3,
       behavior: 'smooth'
     })
   }
@@ -113,7 +113,7 @@ const scrollRight = () => {
 }
 
 .movie-card {
-  flex: 0 0 20%;
+  flex: 0 0 12%;
   padding: 5px;
 }
 
