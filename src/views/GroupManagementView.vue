@@ -25,7 +25,7 @@
   </div>
 
     <div>
-        <h1>{{ groupId }} 그룹 관리 페이지</h1>
+        <h1 style="color: aliceblue;">그룹 관리 페이지</h1>
         <button @click="openModal">가입요청 확인</button>
     </div>
 </template>

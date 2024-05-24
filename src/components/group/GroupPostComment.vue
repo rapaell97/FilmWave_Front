@@ -19,6 +19,7 @@
       </div>
 
       <p v-else>아직 댓글이 없습니다</p>
+      
       <div class="comment-create-div">
         <b @click="createDivOpen" style="cursor: pointer;">댓글 작성하기</b>
         <div v-if="isCreateDivOpen">
@@ -26,6 +27,7 @@
           <button @click="createComment(postId)">작성</button>
         </div>
       </div>
+
     </div>
   </div>
 </template>
