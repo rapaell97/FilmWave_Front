@@ -10,7 +10,7 @@
         <div v-for="comment in postArticle.comment_set" :key="comment.id">
           <div class="oneline-comment">
             <p>{{ comment.user.username }}: {{ comment.content }}</p>
-            <button @click.stop="deleteComment(postArticle.id, comment.id)" class="comment-delete-btn">
+            <button v-if="comment.user.username === userstore.userName" @click.stop="deleteComment(postArticle.id, comment.id)" class="comment-delete-btn">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
